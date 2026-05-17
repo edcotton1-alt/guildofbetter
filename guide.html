@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Going Upstream · The Guild of Better</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:18px;scroll-behavior:smooth}
+body{background:#090907;color:#f0ebe2;font-family:'Crimson Pro',Georgia,serif;overflow-x:hidden}
+:root{--amber:#c17b2a;--red:#c94040;--dim:#9a9a8a;--grey:#1a1a18;--white:#f0ebe2}
+a{color:var(--amber);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.top-bar{background:#040402;border-bottom:1px solid #1a1a18;padding:0.6rem 3rem;display:flex;justify-content:center}
+.top-bar a{font-family:'DM Mono',monospace;font-size:0.9rem;letter-spacing:0.1em;color:var(--amber);text-decoration:none;text-transform:uppercase}
+
+/* HERO */
+.hero{min-height:90vh;display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid rgba(193,123,42,0.3)}
+.hero-left{padding:6rem 5rem;background:#040402;border-right:1px solid #1a1a18;display:flex;flex-direction:column;justify-content:space-between}
+.hero-kicker{font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.2em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:2rem}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,8vw,7rem);letter-spacing:0.02em;line-height:0.9;color:var(--white);margin-bottom:2rem}
+.hero-title span{color:var(--amber)}
+.hero-meta{font-family:'DM Mono',monospace;font-size:0.85rem;letter-spacing:0.12em;color:rgba(193,123,42,0.55);text-transform:uppercase;line-height:2.4}
+.hero-meta span{display:block}
+.hero-right{padding:6rem 5rem;display:flex;flex-direction:column;justify-content:center}
+.hero-intro{font-size:1.2rem;color:#9a9488;line-height:1.9;margin-bottom:2rem}
+.hero-intro strong{color:var(--white)}
+.hero-pull{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.5rem;color:var(--white);line-height:1.55;border-left:3px solid var(--amber);padding-left:2rem;margin-top:2rem}
+
+/* AUDIENCE SECTION */
+.audience{padding:6rem 12vw;border-bottom:1px solid #1a1a18;background:#040402}
+.aud-label{font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.2em;color:rgba(193,123,42,0.6);text-transform:uppercase;display:block;margin-bottom:2rem}
+.aud-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:0.03em;color:var(--white);line-height:1;margin-bottom:2rem}
+.aud-title span{color:var(--amber)}
+.aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:900px}
+.aud-col p{font-size:1.1rem;color:#9a9488;line-height:1.85;margin-bottom:1.2rem}
+.aud-col p strong{color:#c8c4ba}
+.aud-col p:last-child{margin-bottom:0}
+.aud-pull{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.3rem;color:var(--white);line-height:1.6;border-left:3px solid var(--amber);padding-left:2rem;margin-top:2.5rem;max-width:700px}
+
+/* SKILLS BRIDGE */
+.bridge{padding:6rem 12vw;border-bottom:1px solid #1a1a18}
+.bridge-label{font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.2em;color:rgba(193,123,42,0.6);text-transform:uppercase;display:block;margin-bottom:2rem}
+.bridge-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3.5rem);letter-spacing:0.03em;color:var(--white);line-height:1;margin-bottom:2.5rem}
+.bridge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#1a1a18;margin-bottom:3rem}
+.bridge-cell{background:#090907;padding:2rem}
+.bridge-from{font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.08em;color:rgba(193,123,42,0.5);text-transform:uppercase;display:block;margin-bottom:0.5rem}
+.bridge-skill{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.04em;color:var(--amber);line-height:1;margin-bottom:0.8rem}
+.bridge-arrow{font-family:'DM Mono',monospace;font-size:0.85rem;letter-spacing:0.08em;color:rgba(193,123,42,0.45);display:block;margin-bottom:0.8rem}
+.bridge-to{font-size:0.9rem;color:#9a9488;line-height:1.6}
+.bridge-to strong{color:#c8c4ba}
+
+/* PRINCIPLES WITH TEACHERS */
+.principle-with-teacher{padding:5rem 12vw;border-bottom:1px solid #1a1a18}
+.principle-with-teacher.dark{background:#040402}
+.principle-with-teacher.darker{background:#0a0a08}
+.pwt-grid{display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:start}
+.pwt-label{font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.2em;color:rgba(193,123,42,0.6);text-transform:uppercase;display:block;margin-bottom:1rem}
+.pwt-question{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:0.03em;line-height:1;margin-bottom:1.2rem}
+.pwt-question.deserve{color:var(--amber)}
+.pwt-question.accept{color:rgba(255,255,255,0.5)}
+.pwt-question.getaway{color:var(--red)}
+.pwt-question.why{color:var(--white)}
+.pwt-question.hallmark{color:var(--amber)}
+.pwt-body{font-size:1.05rem;color:#9a9488;line-height:1.85;margin-bottom:1.2rem;max-width:600px}
+.pwt-body strong{color:#c8c4ba}
+.pwt-pull{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.2rem;color:var(--white);line-height:1.6;border-left:3px solid var(--amber);padding-left:1.5rem;margin-top:1.5rem;max-width:560px}
+.teacher-card{background:#090907;border:1px solid rgba(193,123,42,0.15);padding:2rem}
+.tc-label{font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.12em;color:rgba(193,123,42,0.4);text-transform:uppercase;display:block;margin-bottom:0.8rem}
+.tc-name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.04em;color:var(--amber);line-height:1;margin-bottom:0.3rem}
+.tc-role{font-size:0.85rem;color:#9a9488;font-style:italic;display:block;margin-bottom:1rem}
+.tc-desc{font-size:0.9rem;color:#9a9488;line-height:1.65;margin-bottom:1rem}
+.tc-read{font-family:'DM Mono',monospace;font-size:0.78rem;letter-spacing:0.1em;color:rgba(193,123,42,0.5);text-transform:uppercase;display:block;margin-bottom:0.3rem}
+.tc-read a{color:var(--amber);font-size:0.85rem;font-family:'Crimson Pro',serif;letter-spacing:0;text-transform:none}
+
+/* ETYM */
+.etym-section{padding:5rem 12vw;border-bottom:1px solid #1a1a18;background:#040402}
+.etym-word{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,14vw,12rem);letter-spacing:0.04em;color:rgba(193,123,42,0.1);line-height:0.9;margin-bottom:-0.5rem;user-select:none}
+.etym-box{padding:2rem;background:rgba(193,123,42,0.05);border-left:3px solid rgba(193,123,42,0.4);max-width:600px;margin-bottom:2rem}
+.etym-phoneme{font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.2em;color:rgba(193,123,42,0.85);text-transform:uppercase;display:block;margin-bottom:0.8rem}
+.etym-latin{font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.12em;color:rgba(193,123,42,0.55);margin-bottom:0.8rem;display:block}
+.etym-def{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.7rem;color:#f0ebe2;display:block;margin-bottom:0.4rem;line-height:1.3}
+.etym-def2{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.7rem;color:#c8c4ba;display:block;margin-bottom:1rem;line-height:1.3}
+.etym-root{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;color:rgba(193,123,42,0.45)}
+.etym-body{font-size:1.1rem;color:#c8c4ba;line-height:1.9;max-width:660px}
+.etym-body p{margin-bottom:1.2rem}
+
+/* TRACKS */
+.tracks-header{padding:5rem 12vw 3rem;border-bottom:1px solid #1a1a18}
+.tracks-header-label{font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.2em;color:rgba(193,123,42,0.6);text-transform:uppercase;display:block;margin-bottom:1.5rem}
+.tracks-header-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,5.5rem);letter-spacing:0.03em;color:var(--white);line-height:1;margin-bottom:1.5rem}
+.tracks-header-title span{color:var(--amber)}
+.tracks-header-body{font-size:1.1rem;color:#9a9488;line-height:1.85;max-width:680px;margin-bottom:3rem}
+.tracks-header-body strong{color:#c8c4ba}
+
+/* SUITS NAV */
+.suits-nav{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:#1a1a18;max-width:950px;margin-bottom:0}
+.suit-nav-item{background:#090907;padding:1.5rem 1rem;text-align:center}
+.suit-nav-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.1rem;color:rgba(193,123,42,0.4);display:block;margin-bottom:0.3rem}
+.suit-nav-name{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.04em;color:var(--amber);display:block;margin-bottom:0.5rem}
+.suit-nav-q{font-size:1rem;color:#9a9488;line-height:1.4;font-style:italic}
+
+/* TRACK BLOCKS */
+.track{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid #1a1a18}
+.track-sidebar{padding:4rem 2.5rem;border-right:1px solid #1a1a18;display:flex;flex-direction:column;align-items:center;text-align:center}
+.track:nth-child(odd) .track-sidebar{background:#040402}
+.track:nth-child(even) .track-sidebar{background:#050503}
+.track:nth-child(odd) .track-body{background:#090907}
+.track:nth-child(even) .track-body{background:#0a0a08}
+.track-mark{margin-bottom:1.5rem;opacity:0.6}
+.track-suit-label{font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.15em;color:rgba(193,123,42,0.5);text-transform:uppercase;display:block;margin-bottom:0.3rem}
+.track-roman{font-family:'DM Serif Display',serif;font-style:italic;font-size:2rem;color:rgba(193,123,42,0.3);line-height:1}
+.track-body{padding:4rem}
+.track-q-label{font-family:'DM Mono',monospace;font-size:1.1rem;letter-spacing:0.12em;color:rgba(193,123,42,0.65);text-transform:uppercase;display:block;margin-bottom:0.5rem}
+.track-question{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,3.5vw,3rem);letter-spacing:0.03em;color:var(--white);line-height:1;margin-bottom:0.8rem}
+.track-subtitle{font-family:'DM Serif Display',serif;font-style:italic;font-size:1rem;color:rgba(193,123,42,0.55);display:block;margin-bottom:0.8rem}
+.track-signals{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.signal-tag{font-family:'DM Mono',monospace;font-size:0.9rem;letter-spacing:0.08em;color:rgba(193,123,42,0.75);border:1px solid rgba(193,123,42,0.35);padding:0.25rem 0.8rem;text-transform:uppercase}
+.track-desc{font-size:1rem;color:#9a9488;line-height:1.8;max-width:640px;margin-bottom:0.8rem}
+.track-desc strong{color:#c8c4ba}
+
+/* SKILL RELEVANCE — the "what this means for you" box */
+.skill-relevance{padding:1.2rem 1.5rem;background:rgba(193,123,42,0.06);border:1px solid rgba(193,123,42,0.2);margin-bottom:2rem}
+.sr-label{font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.12em;color:rgba(193,123,42,0.55);text-transform:uppercase;display:block;margin-bottom:0.5rem}
+.sr-text{font-size:0.95rem;color:#c8c4ba;line-height:1.7;font-style:italic;font-family:'DM Serif Display',serif}
+
+/* PRACTITIONERS */
+.prac-label{font-family:'DM Mono',monospace;font-size:1.05rem;letter-spacing:0.12em;color:rgba(193,123,42,0.6);text-transform:uppercase;display:block;margin-bottom:0.8rem}
+.prac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:transparent;margin-bottom:2rem}
+.prac-cell{background:transparent;padding:1.5rem;border-bottom:1px solid #1a1a18;border-right:1px solid #1a1a18}
+.prac-role-tag{font-family:'DM Mono',monospace;font-size:0.9rem;letter-spacing:0.08em;color:rgba(193,123,42,0.55);text-transform:uppercase;display:block;margin-bottom:0.3rem}
+.prac-name{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.04em;color:var(--amber);line-height:1;margin-bottom:0.3rem}
+.prac-title{font-size:0.78rem;color:#9a9488;font-style:italic;display:block;margin-bottom:0.6rem}
+.prac-desc{font-size:0.85rem;color:#9a9488;line-height:1.6}
+
+/* READING */
+.read-label{font-family:'DM Mono',monospace;font-size:1.05rem;letter-spacing:0.12em;color:rgba(193,123,42,0.6);text-transform:uppercase;display:block;margin-bottom:0.8rem}
+.read-list{list-style:none}
+.read-list li{display:grid;grid-template-columns:68px 1fr;gap:0.8rem;padding:0.65rem 0;border-bottom:1px solid rgba(255,255,255,0.04);align-items:baseline}
+.read-list li:last-child{border-bottom:none}
+.r-tag{font-family:'DM Mono',monospace;font-size:0.85rem;letter-spacing:0.08em;color:rgba(193,123,42,0.55);padding:0.2rem 0.5rem;border:1px solid rgba(193,123,42,0.3);text-align:center;text-transform:uppercase}
+.r-tag.must{color:rgba(193,123,42,0.75);border-color:rgba(193,123,42,0.4)}
+.r-content{font-size:0.92rem;color:#c8c4ba;line-height:1.5}
+.r-content em{color:#9a9488;font-style:normal;font-size:0.85rem}
+
+/* OUTPUT */
+.track-output{padding:1.2rem 1.5rem;background:rgba(193,123,42,0.03);border:1px solid rgba(193,123,42,0.18);border-left:3px solid var(--amber);margin-top:1.5rem}
+.output-label{font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.12em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem}
+.output-text{font-size:0.95rem;color:#c8c4ba;line-height:1.7}
+
+/* HALLMARK CLOSE */
+.hallmark-close{padding:7rem 12vw;background:#040402;border-top:2px solid rgba(193,123,42,0.2);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.hc-label{font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.2em;color:rgba(193,123,42,0.6);text-transform:uppercase;display:block;margin-bottom:1.5rem}
+.hc-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:0.02em;line-height:0.95;color:var(--white);margin-bottom:1.5rem}
+.hc-title span{color:var(--amber)}
+.hc-body{font-size:1.05rem;color:#9a9488;line-height:1.85;margin-bottom:1.2rem}
+.hc-pull{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.25rem;color:var(--white);line-height:1.6;padding-top:2rem;border-top:1px solid rgba(193,123,42,0.2)}
+.hc-right{text-align:center}
+.hc-mark-label{font-family:'DM Mono',monospace;font-size:0.85rem;letter-spacing:0.15em;color:rgba(193,123,42,0.45);text-transform:uppercase;display:block;margin-top:1.5rem}
+
+/* NEWSLETTER */
+.newsletter{background:#0c0c0a;border-top:1px solid #1a1a18;padding:5rem 12vw;text-align:center}
+.nl-kicker{font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:1rem}
+.nl-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:1rem}
+.nl-body{font-size:1.1rem;color:#9a9488;line-height:1.8;max-width:520px;margin:0 auto 2.5rem}
+.nl-btn{display:inline-block;font-family:'DM Mono',monospace;font-size:0.9rem;letter-spacing:0.15em;text-transform:uppercase;padding:1rem 2.5rem;background:var(--amber);color:#090907;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <a href="https://invernessconsult.com" target="_blank">Created by Ed Cotton · Inverness Consulting</a>
+</div>
+<div style="padding:4rem 12vw 3rem;background:#040402;border-bottom:1px solid #1a1a18">
+  <span style="font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.2em;color:rgba(193,123,42,0.6);text-transform:uppercase;display:block;margin-bottom:1.5rem">The Guild of Better</span>
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,10vw,9rem);letter-spacing:0.02em;line-height:0.9;color:var(--white)">The Guide To<br>Going <span style="color:var(--amber)">Upstream.</span></div>
+</div>
+<div class="hero">
+  <div class="hero-left">
+    <svg viewBox="0 0 700 600" width="160" height="192" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto 1.5rem">
+  <path d="M350,30 C440,30 520,80 520,160 C520,280 440,380 350,440 C260,380 180,280 180,160 C180,80 260,30 350,30Z" fill="rgba(0,0,0,0.8)" transform="translate(5,8)"/>
+  <path d="M350,30 C440,30 520,80 520,160 C520,280 440,380 350,440 C260,380 180,280 180,160 C180,80 260,30 350,30Z" fill="#141210"/>
+  <path d="M350,30 C440,30 520,80 520,160 C520,280 440,380 350,440 C260,380 180,280 180,160 C180,80 260,30 350,30Z" stroke="#a8a8b8" stroke-width="8" fill="none"/>
+  <path d="M350,48 C432,48 502,94 502,165 C502,276 432,370 350,425 C268,370 198,276 198,165 C198,94 268,48 350,48Z" stroke="#787888" stroke-width="2" fill="none" opacity="0.6"/>
+  <circle cx="350" cy="34" r="7" fill="#141210" stroke="#a8a8b8" stroke-width="2.5"/>
+  <circle cx="512" cy="155" r="7" fill="#141210" stroke="#a8a8b8" stroke-width="2.5"/>
+  <circle cx="188" cy="155" r="7" fill="#141210" stroke="#a8a8b8" stroke-width="2.5"/>
+  <circle cx="456" cy="362" r="7" fill="#141210" stroke="#a8a8b8" stroke-width="2.5"/>
+  <circle cx="244" cy="362" r="7" fill="#141210" stroke="#a8a8b8" stroke-width="2.5"/>
+  <g transform="translate(350,210)">
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3"/>
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3" transform="rotate(22.5)"/>
+    <circle cx="0" cy="0" r="18" fill="#0e0c0a" stroke="#a8a8b8" stroke-width="3"/>
+    <circle cx="-4" cy="-4" r="5" fill="rgba(200,200,225,0.3)"/>
+  </g>
+  <text x="350" y="353" font-family="Georgia,serif" font-size="42" font-weight="400" fill="#c8c8d8" text-anchor="middle" letter-spacing="10">GB</text>
+  <line x1="50" y1="466" x2="650" y2="466" stroke="rgba(193,123,42,0.3)" stroke-width="1"/>
+  <text x="350" y="520" font-family="Georgia,serif" font-size="30" font-weight="400" fill="#c17b2a" text-anchor="middle" letter-spacing="16">THE GUILD OF BETTER</text>
+</svg>
+    <span class="hero-kicker">The Guild of Better · The Guide to Going Upstream</span>
+    <h1 class="hero-title">Going<br>Up<br><span>Stream.</span></h1>
+
+  </div>
+  <div class="hero-right">
+    <p class="hero-intro">You made better strategies. You were part of great work. <strong>How do you take those skills upstream?</strong></p>
+    <p class="hero-intro">How do you help those in the Guild of Better stay better — and how do you help those who want to get in? This means going upstream. Understanding better across the organization. Where it shows up. What keeps it there. Where the weak links exist.</p>
+    <p class="hero-intro">The product. The service. The people. The systems.</p>
+    <div class="hero-pull">The Guide to Going Upstream explains the best practices and thinkers around better across every dimension — with links to the videos and books by leading practitioners. And starter product ideas that show how you can take your skills upstream.</div>
+    <div style="margin-top:2rem">
+      <a href="index.html" style="font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.8rem 2rem;border:1px solid rgba(193,123,42,0.4);color:var(--amber);display:inline-block">Read the argument first →</a>
+    </div>
+  </div>
+</div>
+
+<div class="tracks-header">
+  <span class="tracks-header-label">The Five Tracks</span>
+  <div class="tracks-header-title">Practice Across<br>Every <span>Dimension.</span></div>
+  <p class="tracks-header-body">Each track maps to one of the five suits. Each suit has three signals. Each signal is a practice question you can apply in your own work. <strong>Each track ends with one product idea — a juicy nugget of possibility that shows where the learning leads commercially.</strong></p>
+  <div class="suits-nav">
+    <div class="suit-nav-item"><span class="suit-nav-num">I</span><span class="suit-nav-name">The Product</span><a href="#track-I" class="suit-nav-q">How is better written into the work?</a></div>
+    <div class="suit-nav-item"><span class="suit-nav-num">II</span><span class="suit-nav-name">The People</span><a href="#track-II" class="suit-nav-q">How do you know what people deserve?</a></div>
+    <div class="suit-nav-item"><span class="suit-nav-num">III</span><span class="suit-nav-name">The Standard</span><a href="#track-III" class="suit-nav-q">How does better become legible?</a></div>
+    <div class="suit-nav-item"><span class="suit-nav-num">IV</span><span class="suit-nav-name">The System</span><a href="#track-IV" class="suit-nav-q">How do you design deserve in?</a></div>
+    <div class="suit-nav-item"><span class="suit-nav-num">V</span><span class="suit-nav-name">The Commitment</span><a href="#track-V" class="suit-nav-q">What do you do when it costs?</a></div>
+  </div>
+</div>
+<div class="track" id="track-I">
+  <div class="track-sidebar">
+    <svg viewBox="0 0 700 560" width="56" height="45" fill="none" xmlns="http://www.w3.org/2000/svg" class="track-mark">
+  <path d="M350,30 C440,30 520,80 520,160 C520,280 440,380 350,440 C260,380 180,280 180,160 C180,80 260,30 350,30Z" fill="#141210" stroke="#a8a8b8" stroke-width="8"/>
+  <g transform="translate(350,205)">
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3"/>
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3" transform="rotate(22.5)"/>
+    <circle cx="0" cy="0" r="14" fill="#0e0c0a" stroke="#a8a8b8" stroke-width="2.5"/>
+  </g>
+  <text x="350" y="345" font-family="Georgia,serif" font-size="36" font-weight="400" fill="#c8c8d8" text-anchor="middle" letter-spacing="8">GB</text>
+</svg>
+    <span class="track-suit-label">Suit I</span>
+    <div class="track-roman">I</div>
+  </div>
+  <div class="track-body">
+    <span class="track-q-label">Track I</span>
+    <div class="track-question">How Is Better Written Into The Work?</div>
+    <div class="track-signals"><span class="signal-tag">The Hold</span><span class="signal-tag">The Wall</span><span class="signal-tag">The Hunt</span></div>
+    <span class="prac-label">Practitioners</span>
+    <div class="prac-grid"><div class="prac-cell">
+      <span class="prac-role-tag">Case</span>
+      <div class="prac-name">Hermès</div>
+      <span class="prac-title">France</span>
+      <div class="prac-desc">One artisan, one bag, eighteen hours.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Case</span>
+      <div class="prac-name">SharkNinja</div>
+      <span class="prac-title">Mass Market</span>
+      <div class="prac-desc">The vacuum that finally works the way life needs it to.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Case</span>
+      <div class="prac-name">Grafton Architects</div>
+      <span class="prac-title">Pritzker 2020</span>
+      <div class="prac-desc">Forty years holding the standard regardless of budget.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">Robert Pirsig</div>
+      <span class="prac-title">Zen and the Art of Motorcycle Maintenance</span>
+      <div class="prac-desc">Quality is a relationship between the maker and the made.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">David Pye</div>
+      <span class="prac-title">The Nature and Art of Workmanship</span>
+      <div class="prac-desc">Defined workmanship of risk — making where the standard must be held moment by moment.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">Dieter Rams</div>
+      <span class="prac-title">Designer · Braun</span>
+      <div class="prac-desc">Refused to make anything that could not be justified by use.</div>
+    </div></div>
+    <span class="read-label">Read · Watch · Listen</span>
+    <ul class="read-list"><li><span class="r-tag must">★</span><span class="r-content"><a href="https://www.youtube.com/results?search_query=hermes+artisan+bag+making+documentary" target="_blank">Hermès: The Making of a Bag</a> — <em>Any 30-minute version. The standard written into the object made visible.</em></span></li><li><span class="r-tag must">★</span><span class="r-content"><a href="https://www.harpercollins.com/products/zen-and-the-art-of-motorcycle-maintenance-robert-m-pirsig" target="_blank">Zen and the Art of Motorcycle Maintenance</a> — <em>Robert Pirsig — quality is a relationship between the maker and the made.</em></span></li><li><span class="r-tag">Read</span><span class="r-content"><a href="https://en.wikipedia.org/wiki/David_Pye" target="_blank">David Pye — The Nature and Art of Workmanship</a> — <em>The most precise account of what the Hold signal looks like in the act of making.</em></span></li><li><span class="r-tag">Watch</span><span class="r-content"><a href="https://www.youtube.com/results?search_query=rams+documentary+dieter+rams" target="_blank">Rams Documentary</a> — <em>Ten principles of good design applied to a life's work.</em></span></li></ul>
+    <div style="margin-top:2rem;padding:1.8rem;background:rgba(193,123,42,0.05);border-left:3px solid var(--amber)">
+      <div style="font-family:'DM Mono',monospace;font-size:0.9rem;letter-spacing:0.1em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:flex;gap:0.8rem;align-items:center;margin-bottom:0.8rem;flex-wrap:wrap">
+        <span>What this unlocks</span>
+        <span style="color:rgba(193,123,42,0.35)">·</span>
+        <span>Product No.1</span>
+        <span style="color:rgba(193,123,42,0.35)">·</span>
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.06em;color:var(--amber)">The Protection</span>
+      </div>
+      <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1rem;color:#c8c4ba;line-height:1.75">Go into a company you believe in and find the two or three things that account for most of what makes them worth choosing. Name them. Make the case for protecting them in language the CFO can act on — not brand language, commercial language. Most organizations are destroying their own difference without knowing it. Nobody is doing the work of making that visible before it is too late.</p>
+    </div>
+  </div>
+</div>
+<div class="track" id="track-II">
+  <div class="track-sidebar">
+    <svg viewBox="0 0 700 560" width="56" height="45" fill="none" xmlns="http://www.w3.org/2000/svg" class="track-mark">
+  <path d="M350,30 C440,30 520,80 520,160 C520,280 440,380 350,440 C260,380 180,280 180,160 C180,80 260,30 350,30Z" fill="#141210" stroke="#a8a8b8" stroke-width="8"/>
+  <g transform="translate(350,205)">
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3"/>
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3" transform="rotate(22.5)"/>
+    <circle cx="0" cy="0" r="14" fill="#0e0c0a" stroke="#a8a8b8" stroke-width="2.5"/>
+  </g>
+  <text x="350" y="345" font-family="Georgia,serif" font-size="36" font-weight="400" fill="#c8c8d8" text-anchor="middle" letter-spacing="8">GB</text>
+</svg>
+    <span class="track-suit-label">Suit II</span>
+    <div class="track-roman">II</div>
+  </div>
+  <div class="track-body">
+    <span class="track-q-label">Track II</span>
+    <div class="track-question">How Do You Know What People Deserve?</div>
+    <div class="track-signals"><span class="signal-tag">Regard</span><span class="signal-tag">Proximity</span><span class="signal-tag">The Expert Customer</span></div>
+    <span class="prac-label">Practitioners</span>
+    <div class="prac-grid"><div class="prac-cell">
+      <span class="prac-role-tag">Practice</span>
+      <div class="prac-name">Jan Chipchase</div>
+      <span class="prac-title">Studio D · Hidden in Plain Sight</span>
+      <div class="prac-desc">Fieldwork practitioner — understanding how people actually live with products in context.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Case</span>
+      <div class="prac-name">Assemble</div>
+      <span class="prac-title">Turner Prize 2015</span>
+      <div class="prac-desc">Proximity through making — built things communities deserved that no developer would touch.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">Pauline Oliveros</div>
+      <span class="prac-title">Deep Listening</span>
+      <div class="prac-desc">The distinction between hearing passively and listening with complete attention.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">Studs Terkel</div>
+      <span class="prac-title">Working · Hard Times</span>
+      <div class="prac-desc">The standard for what genuine research listening looks like.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">Kate Murphy</div>
+      <span class="prac-title">You're Not Listening</span>
+      <div class="prac-desc">Documents why most listening fails and what genuine listening requires.</div>
+    </div></div>
+    <span class="read-label">Read · Watch · Listen</span>
+    <ul class="read-list"><li><span class="r-tag must">★</span><span class="r-content"><a href="https://paulineoliveros.us/deep-listening" target="_blank">Deep Listening · Pauline Oliveros</a> — <em>The distinction between hearing and listening. The most practical tool for the researcher.</em></span></li><li><span class="r-tag must">★</span><span class="r-content"><a href="https://www.youtube.com/results?search_query=studs+terkel+james+baldwin+1962" target="_blank">Studs Terkel interviews James Baldwin</a> — <em>Watch how Terkel listens. The standard for qualitative research stated in practice.</em></span></li><li><span class="r-tag">Read</span><span class="r-content"><a href="https://www.amazon.com/Hidden-Plain-Sight-Understanding-Transformative/dp/0062065025" target="_blank">Jan Chipchase — Hidden in Plain Sight</a> — <em>The fieldwork manual. How to observe people in context.</em></span></li><li><span class="r-tag">Read</span><span class="r-content"><a href="https://www.penguinrandomhouse.com/books/566696/youre-not-listening-by-kate-murphy/" target="_blank">Kate Murphy — You're Not Listening</a> — <em>The most accessible account of why most listening fails.</em></span></li><li><span class="r-tag">Watch</span><span class="r-content"><a href="https://www.youtube.com/watch?v=WVl6HzFwKiw" target="_blank">Assemble — Talk Through a Book of Their Work</a> — <em>Proximity through making. Built things communities deserved that no developer would touch.</em></span></li></ul>
+    <div style="margin-top:2rem;padding:1.8rem;background:rgba(193,123,42,0.05);border-left:3px solid var(--amber)">
+      <div style="font-family:'DM Mono',monospace;font-size:0.9rem;letter-spacing:0.1em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:flex;gap:0.8rem;align-items:center;margin-bottom:0.8rem;flex-wrap:wrap">
+        <span>What this unlocks</span>
+        <span style="color:rgba(193,123,42,0.35)">·</span>
+        <span>Product No.2</span>
+        <span style="color:rgba(193,123,42,0.35)">·</span>
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.06em;color:var(--amber)">Hidden</span>
+      </div>
+      <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1rem;color:#c8c4ba;line-height:1.75">Two versions. Two places to look. The first is inside the organization — the manufacturing decision nobody talks about, the person who holds the standard in their head, the process that is genuinely remarkable and has never been shown. The second is inside the consumer. What has the loyal customer figured out about this product that nobody inside the building knows? The ritual around making the tea. The repair done with the spare thread. The drive of two hours that is about something more than the shopping. Spend time with both. The most valuable hidden thing is sometimes not in the building at all.</p>
+    </div>
+  </div>
+</div>
+<div class="track" id="track-III">
+  <div class="track-sidebar">
+    <svg viewBox="0 0 700 560" width="56" height="45" fill="none" xmlns="http://www.w3.org/2000/svg" class="track-mark">
+  <path d="M350,30 C440,30 520,80 520,160 C520,280 440,380 350,440 C260,380 180,280 180,160 C180,80 260,30 350,30Z" fill="#141210" stroke="#a8a8b8" stroke-width="8"/>
+  <g transform="translate(350,205)">
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3"/>
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3" transform="rotate(22.5)"/>
+    <circle cx="0" cy="0" r="14" fill="#0e0c0a" stroke="#a8a8b8" stroke-width="2.5"/>
+  </g>
+  <text x="350" y="345" font-family="Georgia,serif" font-size="36" font-weight="400" fill="#c8c8d8" text-anchor="middle" letter-spacing="8">GB</text>
+</svg>
+    <span class="track-suit-label">Suit III</span>
+    <div class="track-roman">III</div>
+  </div>
+  <div class="track-body">
+    <span class="track-q-label">Track III</span>
+    <div class="track-question">How Does Better Become Legible and Trusted?</div>
+    <div class="track-signals"><span class="signal-tag">The Clean Price</span><span class="signal-tag">The Mark</span><span class="signal-tag">The Burn</span></div>
+    <span class="prac-label">Practitioners</span>
+    <div class="prac-grid"><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">Onora O'Neill</div>
+      <span class="prac-title">A Question of Trust · TED 2013</span>
+      <div class="prac-desc">Trustworthy versus trusted.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">Dan Davies</div>
+      <span class="prac-title">The Unaccountability Machine</span>
+      <div class="prac-desc">How standards decay through structure rather than villainy.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">George Orwell</div>
+      <span class="prac-title">Politics and the English Language</span>
+      <div class="prac-desc">The standard for clear writing — still the most useful eighteen pages on the subject.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Watch</span>
+      <div class="prac-name">London Assay Office</div>
+      <span class="prac-title">The Hallmark Process</span>
+      <div class="prac-desc">The original standard in operation today.</div>
+    </div></div>
+    <span class="read-label">Read · Watch · Listen</span>
+    <ul class="read-list"><li><span class="r-tag must">★</span><span class="r-content"><a href="https://www.ted.com/talks/onora_o_neill_what_we_don_t_understand_about_trust" target="_blank">Onora O'Neill: What we don't understand about trust</a> — <em>TED 2013 · 18 minutes. Trustworthy versus trusted.</em></span></li><li><span class="r-tag must">★</span><span class="r-content"><a href="https://www.profilebooks.com/titles/dan-davies/the-unaccountability-machine/" target="_blank">The Unaccountability Machine · Dan Davies</a> — <em>How standards decay through structure rather than villainy.</em></span></li><li><span class="r-tag">Read</span><span class="r-content"><a href="https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/" target="_blank">George Orwell — Politics and the English Language</a> — <em>The standard for clear writing. Free online. Still the most useful eighteen pages on the subject.</em></span></li><li><span class="r-tag">Watch</span><span class="r-content"><a href="https://www.youtube.com/results?search_query=london+assay+office+hallmark+goldsmiths" target="_blank">London Assay Office — The Hallmark Process</a> — <em>The original standard in operation today.</em></span></li></ul>
+    <div style="margin-top:2rem;padding:1.8rem;background:rgba(193,123,42,0.05);border-left:3px solid var(--amber)">
+      <div style="font-family:'DM Mono',monospace;font-size:0.9rem;letter-spacing:0.1em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:flex;gap:0.8rem;align-items:center;margin-bottom:0.8rem;flex-wrap:wrap">
+        <span>What this unlocks</span>
+        <span style="color:rgba(193,123,42,0.35)">·</span>
+        <span>Product No.3</span>
+        <span style="color:rgba(193,123,42,0.35)">·</span>
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.06em;color:var(--amber)">The Mark</span>
+      </div>
+      <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1rem;color:#c8c4ba;line-height:1.75">Sit with a leadership team for one day and write one document — the specific promise their organization could be held to. Not the values. Not the mission. The standard. Specific enough that an independent inspector could apply it or refuse it. Then ask them to sign it. The room changes when someone has to sign something. That is the product.</p>
+    </div>
+  </div>
+</div>
+<div class="track" id="track-IV">
+  <div class="track-sidebar">
+    <svg viewBox="0 0 700 560" width="56" height="45" fill="none" xmlns="http://www.w3.org/2000/svg" class="track-mark">
+  <path d="M350,30 C440,30 520,80 520,160 C520,280 440,380 350,440 C260,380 180,280 180,160 C180,80 260,30 350,30Z" fill="#141210" stroke="#a8a8b8" stroke-width="8"/>
+  <g transform="translate(350,205)">
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3"/>
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3" transform="rotate(22.5)"/>
+    <circle cx="0" cy="0" r="14" fill="#0e0c0a" stroke="#a8a8b8" stroke-width="2.5"/>
+  </g>
+  <text x="350" y="345" font-family="Georgia,serif" font-size="36" font-weight="400" fill="#c8c8d8" text-anchor="middle" letter-spacing="8">GB</text>
+</svg>
+    <span class="track-suit-label">Suit IV</span>
+    <div class="track-roman">IV</div>
+  </div>
+  <div class="track-body">
+    <span class="track-q-label">Track IV</span>
+    <div class="track-question">How Do You Design Deserve In?</div>
+    <div class="track-signals"><span class="signal-tag">The Human Override</span><span class="signal-tag">The Open Door</span><span class="signal-tag">The Choice</span></div>
+    <span class="prac-label">Practitioners</span>
+    <div class="prac-grid"><div class="prac-cell">
+      <span class="prac-role-tag">Watch</span>
+      <div class="prac-name">W. Edwards Deming</div>
+      <span class="prac-title">Red Bead Experiment</span>
+      <div class="prac-desc">The most powerful demonstration of system failure versus individual failure.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">Bob Chapman</div>
+      <span class="prac-title">Everybody Matters</span>
+      <div class="prac-desc">The motivation architecture stated as operational practice.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">Stewart Brand</div>
+      <span class="prac-title">How Buildings Learn</span>
+      <div class="prac-desc">Maintenance as a moral act. What you maintain is what you believe in.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">Matthew Syed</div>
+      <span class="prac-title">Black Box Thinking</span>
+      <div class="prac-desc">How organizations learn from failure — and why most do not.</div>
+    </div></div>
+    <span class="read-label">Read · Watch · Listen</span>
+    <ul class="read-list"><li><span class="r-tag must">★</span><span class="r-content"><a href="https://www.youtube.com/results?search_query=deming+red+bead+experiment" target="_blank">Deming's Red Bead Experiment</a> — <em>10 minutes. The most powerful demonstration of system failure versus individual failure. Mandatory.</em></span></li><li><span class="r-tag must">★</span><span class="r-content"><a href="https://www.penguinrandomhouse.com/books/317176/everybody-matters-by-bob-chapman-and-raj-sisodia/" target="_blank">Everybody Matters · Bob Chapman</a> — <em>The motivation architecture stated as operational practice.</em></span></li><li><span class="r-tag">Read</span><span class="r-content"><a href="https://en.wikipedia.org/wiki/How_Buildings_Learn" target="_blank">Stewart Brand — How Buildings Learn</a> — <em>Maintenance as a moral act. What you maintain is what you believe in.</em></span></li><li><span class="r-tag">Read</span><span class="r-content"><a href="https://www.randomhouse.co.uk/books/254527/black-box-thinking-by-matthew-syed/9781473613805" target="_blank">Matthew Syed — Black Box Thinking</a> — <em>How organizations learn from failure — and why most do not.</em></span></li></ul>
+    <div style="margin-top:2rem;padding:1.8rem;background:rgba(193,123,42,0.05);border-left:3px solid var(--amber)">
+      <div style="font-family:'DM Mono',monospace;font-size:0.9rem;letter-spacing:0.1em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:flex;gap:0.8rem;align-items:center;margin-bottom:0.8rem;flex-wrap:wrap">
+        <span>What this unlocks</span>
+        <span style="color:rgba(193,123,42,0.35)">·</span>
+        <span>Product No.4</span>
+        <span style="color:rgba(193,123,42,0.35)">·</span>
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.06em;color:var(--amber)">The Balance</span>
+      </div>
+      <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1rem;color:#c8c4ba;line-height:1.75">Two versions. The organizational Balance maps where the company delivers and falls short against its own standard. The consumer Balance maps where it delivers and falls short against what the consumer actually needs — which is often a different thing entirely. The company thinks its difference is one thing. The consumer values it for a completely different reason. The company is proud of a quality the consumer barely notices. The consumer is deeply attached to something the company is about to optimize away. Bring both versions together and you have the full picture — and the most important strategic finding usually lives in the gap between them.</p>
+    </div>
+  </div>
+</div>
+<div class="track" id="track-V">
+  <div class="track-sidebar">
+    <svg viewBox="0 0 700 560" width="56" height="45" fill="none" xmlns="http://www.w3.org/2000/svg" class="track-mark">
+  <path d="M350,30 C440,30 520,80 520,160 C520,280 440,380 350,440 C260,380 180,280 180,160 C180,80 260,30 350,30Z" fill="#141210" stroke="#a8a8b8" stroke-width="8"/>
+  <g transform="translate(350,205)">
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3"/>
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3" transform="rotate(22.5)"/>
+    <circle cx="0" cy="0" r="14" fill="#0e0c0a" stroke="#a8a8b8" stroke-width="2.5"/>
+  </g>
+  <text x="350" y="345" font-family="Georgia,serif" font-size="36" font-weight="400" fill="#c8c8d8" text-anchor="middle" letter-spacing="8">GB</text>
+</svg>
+    <span class="track-suit-label">Suit V</span>
+    <div class="track-roman">V</div>
+  </div>
+  <div class="track-body">
+    <span class="track-q-label">Track V</span>
+    <div class="track-question">What Do You Do When It Costs Something Real?</div>
+    <div class="track-signals"><span class="signal-tag">The Named Failure</span><span class="signal-tag">The Unrequired Yes</span><span class="signal-tag">The Refusal</span></div>
+    <span class="prac-label">Practitioners</span>
+    <div class="prac-grid"><div class="prac-cell">
+      <span class="prac-role-tag">Watch</span>
+      <div class="prac-name">Cory Doctorow</div>
+      <span class="prac-title">Enshittification</span>
+      <div class="prac-desc">The mechanism named — the platform degrades when the customer cannot leave.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Machine</span>
+      <div class="prac-name">Mira Murati</div>
+      <span class="prac-title">Former CTO · OpenAI</span>
+      <div class="prac-desc">On what machines can and cannot judge — and where human override belongs.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Machine</span>
+      <div class="prac-name">Meredith Whittaker</div>
+      <span class="prac-title">President · Signal Foundation</span>
+      <div class="prac-desc">On what must remain human and answerable — power, rights, refusal.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">Shoshana Zuboff</div>
+      <span class="prac-title">The Age of Surveillance Capitalism</span>
+      <div class="prac-desc">The machine used to extract rather than to serve — chapters 1, 3 and 17.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">Viktor Frankl</div>
+      <span class="prac-title">Man's Search for Meaning</span>
+      <div class="prac-desc">Meaning found in commitment under pressure — the foundation for the unrequired yes.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">Tim Wu</div>
+      <span class="prac-title">The Age of Extraction</span>
+      <div class="prac-desc">How tech platforms conquered the economy by manipulating attention and extracting wealth.</div>
+    </div><div class="prac-cell">
+      <span class="prac-role-tag">Reading</span>
+      <div class="prac-name">Karen Hao</div>
+      <span class="prac-title">Empire of AI</span>
+      <div class="prac-desc">OpenAI's rise from idealistic nonprofit to AI empire — the hidden costs behind the race for power.</div>
+    </div></div>
+    <span class="read-label">Read · Watch · Listen</span>
+    <ul class="read-list"><li><span class="r-tag must">★</span><span class="r-content"><a href="https://www.youtube.com/results?search_query=cory+doctorow+enshittification" target="_blank">Cory Doctorow on Enshittification</a> — <em>The mechanism named and explained. The clearest account of what happens when the customer cannot leave.</em></span></li><li><span class="r-tag must">★</span><span class="r-content"><a href="https://www.publicaffairsbooks.com/titles/shoshana-zuboff/the-age-of-surveillance-capitalism/9781610395694/" target="_blank">The Age of Surveillance Capitalism</a> — <em>Shoshana Zuboff — chapters 1, 3 and 17.</em></span></li><li><span class="r-tag">Read</span><span class="r-content"><a href="https://www.penguinrandomhouse.com/books/216241/mans-search-for-meaning-by-viktor-e-frankl/" target="_blank">Viktor Frankl — Man's Search for Meaning</a> — <em>The philosophical foundation for the unrequired yes — meaning found in commitment under pressure.</em></span></li><li><span class="r-tag">Watch</span><span class="r-content"><a href="https://www.netflix.com/title/81254224" target="_blank">The Social Dilemma</a> — <em>Netflix. The enshittification argument made visible by the people who built the systems.</em></span></li><li><span class="r-tag">Read</span><span class="r-content"><a href="https://www.penguinrandomhouse.com/books/691177/the-age-of-extraction-by-tim-wu/" target="_blank">Tim Wu — The Age of Extraction</a> — <em>How tech platforms conquered the economy by manipulating attention, extracting wealth and deepening inequality.</em></span></li><li><span class="r-tag">Read</span><span class="r-content"><a href="https://www.penguinrandomhouse.com/books/743569/empire-of-ai-by-karen-hao/" target="_blank">Karen Hao — Empire of AI</a> — <em>OpenAI's rise from idealistic nonprofit to AI empire — the hidden human and environmental costs behind the race for power.</em></span></li></ul>
+    <div style="margin-top:2rem;padding:1.8rem;background:rgba(193,123,42,0.05);border-left:3px solid var(--amber)">
+      <div style="font-family:'DM Mono',monospace;font-size:0.9rem;letter-spacing:0.1em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:flex;gap:0.8rem;align-items:center;margin-bottom:0.8rem;flex-wrap:wrap">
+        <span>What this unlocks</span>
+        <span style="color:rgba(193,123,42,0.35)">·</span>
+        <span>Product No.5</span>
+        <span style="color:rgba(193,123,42,0.35)">·</span>
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.06em;color:var(--amber)">The Assay</span>
+      </div>
+      <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1rem;color:#c8c4ba;line-height:1.75">Offer to come back to a client once a year with a single question: is the standard still holding? One week of observation. One document — the mark applied or withheld, with a commentary explaining the verdict. Not a satisfaction survey. A verdict from someone with no financial stake in whether the answer is yes or no. That relationship — the independent inspector who tells the truth annually — is the product the Worshipful Company of Goldsmiths invented in 1327 and nobody has offered commercially since.</p>
+    </div>
+  </div>
+</div>
+<div class="newsletter">
+  <span class="nl-kicker">Stay In It</span>
+  <div class="nl-title">Hardwired</div>
+  <p class="nl-body">A newsletter about the systems, standards, refusals, and rituals that keep companies from becoming average.</p>
+  <a href="https://ed542.substack.com/" target="_blank" class="nl-btn">Subscribe to Hardwired</a>
+</div>
+</body>
+</html>
