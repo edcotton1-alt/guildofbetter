@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>The Fifteen Signals · Don't Half-Arse It</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:18px;scroll-behavior:smooth}
+body{background:#090907;color:#f0ebe2;font-family:'Crimson Pro',Georgia,serif;overflow-x:hidden}
+:root{--amber:#c17b2a;--red:#8b2020;--dim:#9a9a8a;--grey:#1a1a18;--white:#f0ebe2}
+
+.top-bar{background:#040402;border-bottom:1px solid #1a1a18;padding:0.5rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.top-bar a{font-family:'DM Mono',monospace;font-size:0.85rem;letter-spacing:0.1em;color:var(--amber);text-decoration:none;text-transform:uppercase}
+.top-bar span{font-family:'DM Mono',monospace;font-size:0.85rem;letter-spacing:0.1em;color:var(--dim);text-transform:uppercase}
+
+.page-link{display:inline-block;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;padding:1.2rem 3rem;background:var(--amber);color:#090907;text-decoration:none;transition:background 0.2s}
+.page-link:hover{background:#d4892e}
+.page-link.ghost{background:none;color:var(--amber);border:1px solid rgba(193,123,42,0.4)}
+.page-link.ghost:hover{background:rgba(193,123,42,0.08)}
+
+.section-label{font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.15em;color:rgba(193,123,42,0.85);text-transform:uppercase;display:block;margin-bottom:1rem}
+.section-intro{font-size:1.1rem;color:#9a9488;line-height:1.8;max-width:640px;margin-bottom:3rem}
+
+.newsletter{background:#0c0c0a;border-top:1px solid #1a1a18;padding:5rem 12vw;text-align:center}
+.nl-kicker{font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.15em;color:rgba(193,123,42,0.8);text-transform:uppercase;display:block;margin-bottom:1rem}
+.nl-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:1rem}
+.nl-body{font-size:1rem;color:#9a9488;line-height:1.8;max-width:520px;margin:0 auto 2.5rem}
+.nl-body strong{color:#c8c4ba}
+.nl-btn{display:inline-block;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;padding:1rem 2.5rem;background:var(--amber);color:#090907;text-decoration:none}
+
+.signals-hero{padding:6rem 12vw 4rem;border-bottom:1px solid #1a1a18}
+.signals-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,12vw,11rem);letter-spacing:0.02em;color:var(--white);line-height:0.92;margin-bottom:1.5rem}
+.signals-hero h1 span{color:var(--amber)}
+.signals-body{padding:4rem 12vw;border-bottom:1px solid #1a1a18}
+</style>
+</head>
+<body>
+<div class="top-bar" style="justify-content:center">
+  <a href="https://invernessconsult.com" target="_blank">Created by Ed Cotton · Inverness Consulting</a>
+</div>
+
+<div class="signals-hero">
+  <svg viewBox="0 0 700 600" width="255" height="306" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 0 0.5rem">
+  <!-- Shield shadow -->
+  <path d="M350,30 C440,30 520,80 520,160 C520,280 440,380 350,440 C260,380 180,280 180,160 C180,80 260,30 350,30Z"
+        fill="rgba(0,0,0,0.8)" transform="translate(5,8)"/>
+  <!-- Shield body -->
+  <path d="M350,30 C440,30 520,80 520,160 C520,280 440,380 350,440 C260,380 180,280 180,160 C180,80 260,30 350,30Z"
+        fill="#141210"/>
+  <!-- Shield outer rim silver -->
+  <path d="M350,30 C440,30 520,80 520,160 C520,280 440,380 350,440 C260,380 180,280 180,160 C180,80 260,30 350,30Z"
+        stroke="#a8a8b8" stroke-width="8" fill="none"/>
+  <!-- Shield inner rim -->
+  <path d="M350,48 C432,48 502,94 502,165 C502,276 432,370 350,425 C268,370 198,276 198,165 C198,94 268,48 350,48Z"
+        stroke="#787888" stroke-width="2" fill="none" opacity="0.6"/>
+  <!-- Rivets -->
+  <circle cx="350" cy="34" r="7" fill="#141210" stroke="#a8a8b8" stroke-width="2.5"/>
+  <circle cx="512" cy="155" r="7" fill="#141210" stroke="#a8a8b8" stroke-width="2.5"/>
+  <circle cx="188" cy="155" r="7" fill="#141210" stroke="#a8a8b8" stroke-width="2.5"/>
+  <circle cx="456" cy="362" r="7" fill="#141210" stroke="#a8a8b8" stroke-width="2.5"/>
+  <circle cx="244" cy="362" r="7" fill="#141210" stroke="#a8a8b8" stroke-width="2.5"/>
+
+  <!-- Eight pointed star — two overlapping squares rotated 22.5deg -->
+  <!-- Star shadow -->
+  <g transform="translate(350,210)">
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26"
+             fill="rgba(0,0,0,0.6)" transform="translate(3,5)"/>
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26"
+             fill="rgba(0,0,0,0.6)" transform="translate(3,5) rotate(22.5)"/>
+    <!-- Star body -->
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26"
+             fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3"/>
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26"
+             fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3" transform="rotate(22.5)"/>
+    <!-- Star inner highlight lines -->
+    <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26"
+             fill="none" stroke="rgba(200,200,220,0.2)" stroke-width="1.5" transform="translate(-1.5,-1.5)"/>
+    <!-- Centre jewel -->
+    <circle cx="0" cy="0" r="18" fill="#0e0c0a" stroke="#a8a8b8" stroke-width="3"/>
+    <circle cx="0" cy="0" r="11" fill="#1a1816" stroke="#686878" stroke-width="1.5" opacity="0.8"/>
+    <circle cx="-4" cy="-4" r="5" fill="rgba(200,200,225,0.3)"/>
+    <circle cx="-4" cy="-4" r="2" fill="rgba(220,220,240,0.5)"/>
+  </g>
+
+  <!-- GB below star inside shield -->
+  <text x="351" y="355" font-family="Georgia,'Times New Roman',serif" font-size="42" font-weight="400"
+        fill="rgba(0,0,0,0.8)" text-anchor="middle" letter-spacing="10">GB</text>
+  <text x="350" y="353" font-family="Georgia,'Times New Roman',serif" font-size="42" font-weight="400"
+        fill="#c8c8d8" text-anchor="middle" letter-spacing="10">GB</text>
+
+  <!-- THE GUILD OF BETTER below shield -->
+  <text x="351" y="522" font-family="Georgia,'Times New Roman',serif" font-size="30" font-weight="400"
+        fill="rgba(0,0,0,0.5)" text-anchor="middle" letter-spacing="16">THE GUILD OF BETTER</text>
+  <text x="350" y="520" font-family="Georgia,'Times New Roman',serif" font-size="30" font-weight="400"
+        fill="#c17b2a" text-anchor="middle" letter-spacing="16">THE GUILD OF BETTER</text>
+
+  <!-- Thin rule above text -->
+  <line x1="50" y1="466" x2="650" y2="466" stroke="rgba(193,123,42,0.3)" stroke-width="1"/>
+</svg>
+  <h1>The Fifteen Signals</h1>
+  <p style="font-size:1.2rem;color:#9a9488;line-height:1.8;max-width:600px;margin-top:1.5rem">Five suits. Three signals each. Things you can go and observe — not what organizations say about themselves, but what they do.</p>
+</div>
+
+<div class="signals-body">
+  <div style="margin-bottom:3.5rem">
+  <div style="display:flex;align-items:baseline;gap:1.5rem;margin-bottom:1.5rem;padding-bottom:0.8rem;border-bottom:1px solid rgba(193,123,42,0.15)">
+    <span style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1.3rem;color:rgba(193,123,42,0.5)">I</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.04em;color:var(--amber);line-height:1">The Product</span>
+    
+  </div>
+  <p style="font-size:1.05rem;color:#9a9488;line-height:1.7;margin-bottom:1.5rem;font-style:italic;font-family:'DM Serif Display',serif">How they treat the work when no one is watching.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:none">
+    <div style="background:none;padding:2rem 1.8rem 2.5rem;border-bottom:1px solid rgba(193,123,42,0.08);transition:none" >
+    <svg viewBox="0 0 56 56" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.8rem;opacity:0.8"><circle cx="28" cy="28" r="26" stroke="#c17b2a" stroke-width="2"/><circle cx="28" cy="10" r="3" stroke="#c17b2a" stroke-width="2" fill="none"/><line x1="28" y1="13" x2="28" y2="38" stroke="#c17b2a" stroke-width="2.5"/><path d="M22,38 L28,46 L34,38Z" stroke="#c17b2a" stroke-width="1.8" fill="rgba(193,123,42,0.3)" stroke-linejoin="round"/></svg>
+    <span style="font-family:'DM Mono',monospace;font-size:1.2rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem">01</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:0.5rem;display:block">The Hold</span>
+    <p style="font-size:0.95rem;color:#9a9488;line-height:1.65">They maintained their standard even when it cost them money.</p>
+  </div><div style="background:none;padding:2rem 1.8rem 2.5rem;border-bottom:1px solid rgba(193,123,42,0.08);transition:none" >
+    <svg viewBox="0 0 56 56" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.8rem;opacity:0.8"><circle cx="28" cy="28" r="26" stroke="#c17b2a" stroke-width="2"/><rect x="12" y="12" width="26" height="22" rx="1" stroke="#c17b2a" stroke-width="2" fill="rgba(193,123,42,0.08)"/><line x1="17" y1="20" x2="30" y2="20" stroke="#c17b2a" stroke-width="1.8" stroke-linecap="round"/><line x1="17" y1="26" x2="28" y2="26" stroke="#c17b2a" stroke-width="1.8" stroke-linecap="round"/><line x1="30" y1="30" x2="42" y2="42" stroke="#c17b2a" stroke-width="3" stroke-linecap="round"/><path d="M40,40 L44,46 L38,44Z" fill="#c17b2a" opacity="0.7"/></svg>
+    <span style="font-family:'DM Mono',monospace;font-size:1.2rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem">02</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:0.5rem;display:block">The Wall</span>
+    <p style="font-size:0.95rem;color:#9a9488;line-height:1.65">Their standard is written into the work, not the brand deck.</p>
+  </div><div style="background:none;padding:2rem 1.8rem 2.5rem;border-bottom:1px solid rgba(193,123,42,0.08);transition:none" >
+    <svg viewBox="0 0 56 56" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.8rem;opacity:0.8"><circle cx="28" cy="28" r="26" stroke="#c17b2a" stroke-width="2"/><path d="M28,10 C38,10 46,18 46,28 C46,38 38,46 28,46 C18,46 10,38 10,28 C10,18 18,10 28,10" stroke="#c17b2a" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="60 16"/><path d="M22,8 L28,14 L34,8" stroke="#c17b2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    <span style="font-family:'DM Mono',monospace;font-size:1.2rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem">03</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:0.5rem;display:block">The Hunt</span>
+    <p style="font-size:0.95rem;color:#9a9488;line-height:1.65">Ask what they are still working to improve. They will have a specific answer.</p>
+  </div>
+  </div>
+</div><div style="padding:1.5rem 0 2.5rem;opacity:0.4;text-align:center">
+  <svg viewBox="0 0 700 480" width="50" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M350,20 C440,20 520,70 520,150 C520,270 440,370 350,430 C260,370 180,270 180,150 C180,70 260,20 350,20Z" fill="#141210" stroke="#a8a8b8" stroke-width="8"/>
+    <g transform="translate(350,200)">
+      <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3"/>
+      <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3" transform="rotate(22.5)"/>
+      <circle cx="0" cy="0" r="14" fill="#0e0c0a" stroke="#a8a8b8" stroke-width="2.5"/>
+    </g>
+    <text x="350" y="350" font-family="Georgia,serif" font-size="38" font-weight="400" fill="#c8c8d8" text-anchor="middle" letter-spacing="8">GB</text>
+  </svg>
+</div><div style="margin-bottom:3.5rem">
+  <div style="display:flex;align-items:baseline;gap:1.5rem;margin-bottom:1.5rem;padding-bottom:0.8rem;border-bottom:1px solid rgba(193,123,42,0.15)">
+    <span style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1.3rem;color:rgba(193,123,42,0.5)">II</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.04em;color:var(--amber);line-height:1">The People</span>
+    
+  </div>
+  <p style="font-size:1.05rem;color:#9a9488;line-height:1.7;margin-bottom:1.5rem;font-style:italic;font-family:'DM Serif Display',serif">How they think about and behave toward the people they serve.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:none">
+    <div style="background:none;padding:2rem 1.8rem 2.5rem;border-bottom:1px solid rgba(193,123,42,0.08);transition:none" >
+    <svg viewBox="0 0 56 56" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.8rem;opacity:0.8"><circle cx="28" cy="28" r="26" stroke="#c17b2a" stroke-width="2"/><path d="M28,36 C28,36 10,22 10,12 C10,4 18,-2 28,8 C38,-2 46,4 46,12 C46,22 28,36 28,36Z" stroke="#c17b2a" stroke-width="2" fill="rgba(193,123,42,0.2)"/></svg>
+    <span style="font-family:'DM Mono',monospace;font-size:1.2rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem">04</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:0.5rem;display:block">Regard</span>
+    <p style="font-size:0.95rem;color:#9a9488;line-height:1.65">You can tell they genuinely like and respect the people they serve.</p>
+  </div><div style="background:none;padding:2rem 1.8rem 2.5rem;border-bottom:1px solid rgba(193,123,42,0.08);transition:none" >
+    <svg viewBox="0 0 56 56" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.8rem;opacity:0.8"><circle cx="28" cy="28" r="26" stroke="#c17b2a" stroke-width="2"/><circle cx="16" cy="16" r="4" stroke="#c17b2a" stroke-width="1.8"/><line x1="16" y1="20" x2="16" y2="30" stroke="#c17b2a" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="24" x2="22" y2="28" stroke="#c17b2a" stroke-width="1.8" stroke-linecap="round"/><line x1="16" y1="30" x2="21" y2="38" stroke="#c17b2a" stroke-width="1.8" stroke-linecap="round"/><circle cx="40" cy="16" r="4" stroke="#c17b2a" stroke-width="1.8"/><line x1="40" y1="20" x2="40" y2="30" stroke="#c17b2a" stroke-width="2" stroke-linecap="round"/><line x1="40" y1="24" x2="34" y2="28" stroke="#c17b2a" stroke-width="1.8" stroke-linecap="round"/><line x1="40" y1="30" x2="35" y2="38" stroke="#c17b2a" stroke-width="1.8" stroke-linecap="round"/><circle cx="28" cy="26" r="4" stroke="#c17b2a" stroke-width="1.5" fill="rgba(193,123,42,0.25)"/></svg>
+    <span style="font-family:'DM Mono',monospace;font-size:1.2rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem">05</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:0.5rem;display:block">Proximity</span>
+    <p style="font-size:0.95rem;color:#9a9488;line-height:1.65">The people who build it have spent real time with the people who use it.</p>
+  </div><div style="background:none;padding:2rem 1.8rem 2.5rem;border-bottom:1px solid rgba(193,123,42,0.08);transition:none" >
+    <svg viewBox="0 0 56 56" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.8rem;opacity:0.8"><circle cx="28" cy="28" r="26" stroke="#c17b2a" stroke-width="2"/><polygon points="28,10 31,20 42,20 34,26 37,36 28,30 19,36 22,26 14,20 25,20" stroke="#c17b2a" stroke-width="1.8" fill="rgba(193,123,42,0.2)"/><path d="M18,44 C18,48 38,48 38,44" stroke="#c17b2a" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M36,42 L38,44 L36,46" stroke="#c17b2a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span style="font-family:'DM Mono',monospace;font-size:1.2rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem">06</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:0.5rem;display:block">The Expert Customer</span>
+    <p style="font-size:0.95rem;color:#9a9488;line-height:1.65">The people who know the category best are not embarrassed to choose them.</p>
+  </div>
+  </div>
+</div><div style="padding:1.5rem 0 2.5rem;opacity:0.4;text-align:center">
+  <svg viewBox="0 0 700 480" width="50" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M350,20 C440,20 520,70 520,150 C520,270 440,370 350,430 C260,370 180,270 180,150 C180,70 260,20 350,20Z" fill="#141210" stroke="#a8a8b8" stroke-width="8"/>
+    <g transform="translate(350,200)">
+      <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3"/>
+      <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3" transform="rotate(22.5)"/>
+      <circle cx="0" cy="0" r="14" fill="#0e0c0a" stroke="#a8a8b8" stroke-width="2.5"/>
+    </g>
+    <text x="350" y="350" font-family="Georgia,serif" font-size="38" font-weight="400" fill="#c8c8d8" text-anchor="middle" letter-spacing="8">GB</text>
+  </svg>
+</div><div style="margin-bottom:3.5rem">
+  <div style="display:flex;align-items:baseline;gap:1.5rem;margin-bottom:1.5rem;padding-bottom:0.8rem;border-bottom:1px solid rgba(193,123,42,0.15)">
+    <span style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1.3rem;color:rgba(193,123,42,0.5)">III</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.04em;color:var(--amber);line-height:1">The Standard</span>
+    
+  </div>
+  <p style="font-size:1.05rem;color:#9a9488;line-height:1.7;margin-bottom:1.5rem;font-style:italic;font-family:'DM Serif Display',serif">How they define, communicate and protect what they stand for.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:none">
+    <div style="background:none;padding:2rem 1.8rem 2.5rem;border-bottom:1px solid rgba(193,123,42,0.08);transition:none" >
+    <svg viewBox="0 0 56 56" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.8rem;opacity:0.8"><circle cx="28" cy="28" r="26" stroke="#c17b2a" stroke-width="2"/><circle cx="28" cy="10" r="3" stroke="#c17b2a" stroke-width="1.5" fill="none"/><line x1="28" y1="13" x2="28" y2="42" stroke="#c17b2a" stroke-width="2.5" stroke-linecap="round"/><line x1="12" y1="22" x2="44" y2="22" stroke="#c17b2a" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="22" x2="12" y2="30" stroke="#c17b2a" stroke-width="1.5"/><line x1="44" y1="22" x2="44" y2="30" stroke="#c17b2a" stroke-width="1.5"/><path d="M6,30 C6,36 18,40 12,40 C6,40 6,36 6,30Z" stroke="#c17b2a" stroke-width="1.5" fill="rgba(193,123,42,0.15)"/><path d="M38,30 C38,36 50,40 44,40 C38,40 38,36 38,30Z" stroke="#c17b2a" stroke-width="1.5" fill="rgba(193,123,42,0.15)"/></svg>
+    <span style="font-family:'DM Mono',monospace;font-size:1.2rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem">07</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:0.5rem;display:block">The Clean Price</span>
+    <p style="font-size:0.95rem;color:#9a9488;line-height:1.65">They can explain what they charge without hiding behind complexity.</p>
+  </div><div style="background:none;padding:2rem 1.8rem 2.5rem;border-bottom:1px solid rgba(193,123,42,0.08);transition:none" >
+    <svg viewBox="0 0 56 56" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.8rem;opacity:0.8"><circle cx="28" cy="28" r="26" stroke="#c17b2a" stroke-width="2"/><path d="M28,8 C36,8 44,14 44,22 C44,34 36,42 28,48 C20,42 12,34 12,22 C12,14 20,8 28,8Z" stroke="#c17b2a" stroke-width="2" fill="rgba(193,123,42,0.1)"/><polygon points="28,16 30,22 37,22 31,26 33,33 28,29 23,33 25,26 19,22 26,22" stroke="#c17b2a" stroke-width="1.5" fill="rgba(193,123,42,0.3)"/></svg>
+    <span style="font-family:'DM Mono',monospace;font-size:1.2rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem">08</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:0.5rem;display:block">The Mark</span>
+    <p style="font-size:0.95rem;color:#9a9488;line-height:1.65">Their brand stands for something specific they would protect at real commercial cost.</p>
+  </div><div style="background:none;padding:2rem 1.8rem 2.5rem;border-bottom:1px solid rgba(193,123,42,0.08);transition:none" >
+    <svg viewBox="0 0 56 56" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.8rem;opacity:0.8"><circle cx="28" cy="28" r="26" stroke="#c17b2a" stroke-width="2"/><path d="M28,46 C28,46 10,32 10,18 C10,6 18,-2 28,10 C38,-2 46,6 46,18 C46,32 28,46 28,46Z" stroke="#c17b2a" stroke-width="2" fill="rgba(193,123,42,0.12)"/><path d="M28,38 C28,38 16,28 16,20 C16,12 22,8 28,16 C34,8 40,12 40,20 C40,28 28,38 28,38Z" stroke="#c17b2a" stroke-width="1.5" fill="rgba(193,123,42,0.2)"/><path d="M28,30 C28,30 22,24 22,20 C22,16 25,14 28,18 C31,14 34,16 34,20 C34,24 28,30 28,30Z" fill="#c17b2a" opacity="0.5"/></svg>
+    <span style="font-family:'DM Mono',monospace;font-size:1.2rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem">09</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:0.5rem;display:block">The Burn</span>
+    <p style="font-size:0.95rem;color:#9a9488;line-height:1.65">Poor work in their category genuinely bothers them.</p>
+  </div>
+  </div>
+</div><div style="padding:1.5rem 0 2.5rem;opacity:0.4;text-align:center">
+  <svg viewBox="0 0 700 480" width="50" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M350,20 C440,20 520,70 520,150 C520,270 440,370 350,430 C260,370 180,270 180,150 C180,70 260,20 350,20Z" fill="#141210" stroke="#a8a8b8" stroke-width="8"/>
+    <g transform="translate(350,200)">
+      <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3"/>
+      <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3" transform="rotate(22.5)"/>
+      <circle cx="0" cy="0" r="14" fill="#0e0c0a" stroke="#a8a8b8" stroke-width="2.5"/>
+    </g>
+    <text x="350" y="350" font-family="Georgia,serif" font-size="38" font-weight="400" fill="#c8c8d8" text-anchor="middle" letter-spacing="8">GB</text>
+  </svg>
+</div><div style="margin-bottom:3.5rem">
+  <div style="display:flex;align-items:baseline;gap:1.5rem;margin-bottom:1.5rem;padding-bottom:0.8rem;border-bottom:1px solid rgba(193,123,42,0.15)">
+    <span style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1.3rem;color:rgba(193,123,42,0.5)">IV</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.04em;color:var(--amber);line-height:1">The System</span>
+    
+  </div>
+  <p style="font-size:1.05rem;color:#9a9488;line-height:1.7;margin-bottom:1.5rem;font-style:italic;font-family:'DM Serif Display',serif">How they build accountability and choice into their architecture.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:none">
+    <div style="background:none;padding:2rem 1.8rem 2.5rem;border-bottom:1px solid rgba(193,123,42,0.08);transition:none" >
+    <svg viewBox="0 0 56 56" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.8rem;opacity:0.8"><circle cx="28" cy="28" r="26" stroke="#c17b2a" stroke-width="2"/><path d="M28,10 C28,10 14,16 14,30 C14,38 12,40 12,40 L44,40 C44,40 42,38 42,30 C42,16 28,10 28,10Z" stroke="#c17b2a" stroke-width="2" fill="rgba(193,123,42,0.15)"/><line x1="22" y1="10" x2="34" y2="10" stroke="#c17b2a" stroke-width="2" stroke-linecap="round"/><line x1="10" y1="40" x2="46" y2="40" stroke="#c17b2a" stroke-width="2.5" stroke-linecap="round"/><circle cx="28" cy="44" r="3" stroke="#c17b2a" stroke-width="1.5" fill="none"/></svg>
+    <span style="font-family:'DM Mono',monospace;font-size:1.2rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem">10</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:0.5rem;display:block">The Human Override</span>
+    <p style="font-size:0.95rem;color:#9a9488;line-height:1.65">When something goes wrong, someone with real power to fix it intervenes.</p>
+  </div><div style="background:none;padding:2rem 1.8rem 2.5rem;border-bottom:1px solid rgba(193,123,42,0.08);transition:none" >
+    <svg viewBox="0 0 56 56" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.8rem;opacity:0.8"><circle cx="28" cy="28" r="26" stroke="#c17b2a" stroke-width="2"/><line x1="14" y1="12" x2="14" y2="44" stroke="#c17b2a" stroke-width="2.5" stroke-linecap="round"/><line x1="42" y1="12" x2="42" y2="44" stroke="#c17b2a" stroke-width="2.5" stroke-linecap="round"/><rect x="16" y="14" width="10" height="28" rx="1" stroke="#c17b2a" stroke-width="1.5" fill="rgba(193,123,42,0.1)"/><path d="M42,14 C48,14 52,20 52,28 C52,36 48,42 42,42" stroke="#c17b2a" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/><line x1="20" y1="28" x2="50" y2="28" stroke="#c17b2a" stroke-width="1.5" stroke-linecap="round"/><path d="M48,25 L52,28 L48,31" stroke="#c17b2a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span style="font-family:'DM Mono',monospace;font-size:1.2rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem">11</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:0.5rem;display:block">The Open Door</span>
+    <p style="font-size:0.95rem;color:#9a9488;line-height:1.65">They make it as easy to leave as it was to join.</p>
+  </div><div style="background:none;padding:2rem 1.8rem 2.5rem;border-bottom:1px solid rgba(193,123,42,0.08);transition:none" >
+    <svg viewBox="0 0 56 56" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.8rem;opacity:0.8"><circle cx="28" cy="28" r="26" stroke="#c17b2a" stroke-width="2"/><circle cx="28" cy="28" r="10" stroke="#c17b2a" stroke-width="2" fill="rgba(193,123,42,0.08)"/><circle cx="28" cy="28" r="4" stroke="#c17b2a" stroke-width="1.5" fill="none"/><rect x="26" y="12" width="4" height="7" rx="1" stroke="#c17b2a" stroke-width="1.2" fill="rgba(193,123,42,0.15)"/><rect x="26" y="37" width="4" height="7" rx="1" stroke="#c17b2a" stroke-width="1.2" fill="rgba(193,123,42,0.15)"/><rect x="12" y="26" width="7" height="4" rx="1" stroke="#c17b2a" stroke-width="1.2" fill="rgba(193,123,42,0.15)"/><rect x="37" y="26" width="7" height="4" rx="1" stroke="#c17b2a" stroke-width="1.2" fill="rgba(193,123,42,0.15)"/><line x1="12" y1="12" x2="44" y2="44" stroke="#c17b2a" stroke-width="3.5" stroke-linecap="round"/></svg>
+    <span style="font-family:'DM Mono',monospace;font-size:1.2rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem">12</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:0.5rem;display:block">The Choice</span>
+    <p style="font-size:0.95rem;color:#9a9488;line-height:1.65">There is a technology they chose not to use because it would have made their product less human.</p>
+  </div>
+  </div>
+</div><div style="padding:1.5rem 0 2.5rem;opacity:0.4;text-align:center">
+  <svg viewBox="0 0 700 480" width="50" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M350,20 C440,20 520,70 520,150 C520,270 440,370 350,430 C260,370 180,270 180,150 C180,70 260,20 350,20Z" fill="#141210" stroke="#a8a8b8" stroke-width="8"/>
+    <g transform="translate(350,200)">
+      <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3"/>
+      <polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3" transform="rotate(22.5)"/>
+      <circle cx="0" cy="0" r="14" fill="#0e0c0a" stroke="#a8a8b8" stroke-width="2.5"/>
+    </g>
+    <text x="350" y="350" font-family="Georgia,serif" font-size="38" font-weight="400" fill="#c8c8d8" text-anchor="middle" letter-spacing="8">GB</text>
+  </svg>
+</div><div style="margin-bottom:3.5rem">
+  <div style="display:flex;align-items:baseline;gap:1.5rem;margin-bottom:1.5rem;padding-bottom:0.8rem;border-bottom:1px solid rgba(193,123,42,0.15)">
+    <span style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1.3rem;color:rgba(193,123,42,0.5)">V</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.04em;color:var(--amber);line-height:1">The Commitment</span>
+    
+  </div>
+  <p style="font-size:1.05rem;color:#9a9488;line-height:1.7;margin-bottom:1.5rem;font-style:italic;font-family:'DM Serif Display',serif">How they behave when things go wrong and what they give that nobody asked for.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:none">
+    <div style="background:none;padding:2rem 1.8rem 2.5rem;border-bottom:1px solid rgba(193,123,42,0.08);transition:none" >
+    <svg viewBox="0 0 56 56" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.8rem;opacity:0.8"><circle cx="28" cy="28" r="26" stroke="#c17b2a" stroke-width="2"/><rect x="16" y="8" width="24" height="7" rx="1" stroke="#c17b2a" stroke-width="1.5" fill="rgba(193,123,42,0.15)"/><line x1="28" y1="15" x2="28" y2="20" stroke="#c17b2a" stroke-width="1.5" stroke-dasharray="2 2"/><circle cx="28" cy="25" r="5" stroke="#c17b2a" stroke-width="2"/><line x1="28" y1="30" x2="28" y2="40" stroke="#c17b2a" stroke-width="2.5" stroke-linecap="round"/><line x1="28" y1="34" x2="20" y2="40" stroke="#c17b2a" stroke-width="2" stroke-linecap="round"/><line x1="28" y1="34" x2="36" y2="40" stroke="#c17b2a" stroke-width="2" stroke-linecap="round"/><line x1="28" y1="40" x2="22" y2="48" stroke="#c17b2a" stroke-width="2" stroke-linecap="round"/><line x1="28" y1="40" x2="34" y2="48" stroke="#c17b2a" stroke-width="2" stroke-linecap="round"/></svg>
+    <span style="font-family:'DM Mono',monospace;font-size:1.2rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem">13</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:0.5rem;display:block">The Named Failure</span>
+    <p style="font-size:0.95rem;color:#9a9488;line-height:1.65">When they fail leadership names the failure and changes the system not just the copy.</p>
+  </div><div style="background:none;padding:2rem 1.8rem 2.5rem;border-bottom:1px solid rgba(193,123,42,0.08);transition:none" >
+    <svg viewBox="0 0 56 56" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.8rem;opacity:0.8"><circle cx="28" cy="28" r="26" stroke="#c17b2a" stroke-width="2"/><path d="M14,36 C14,30 20,26 28,26 C36,26 42,30 42,36 C42,42 36,46 28,46 C20,46 14,42 14,36Z" stroke="#c17b2a" stroke-width="2" fill="rgba(193,123,42,0.1)"/><polygon points="28,10 31,18 40,18 33,23 36,32 28,27 20,32 23,23 16,18 25,18" stroke="#c17b2a" stroke-width="1.8" fill="rgba(193,123,42,0.25)"/></svg>
+    <span style="font-family:'DM Mono',monospace;font-size:1.2rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem">14</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:0.5rem;display:block">The Unrequired Yes</span>
+    <p style="font-size:0.95rem;color:#9a9488;line-height:1.65">They have made investments in quality that nobody required.</p>
+  </div><div style="background:none;padding:2rem 1.8rem 2.5rem;border-bottom:1px solid rgba(193,123,42,0.08);transition:none" >
+    <svg viewBox="0 0 56 56" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.8rem;opacity:0.8"><circle cx="28" cy="28" r="26" stroke="#c17b2a" stroke-width="2"/><path d="M18,42 C16,34 16,24 18,16 C20,10 24,6 28,6 C32,6 34,10 34,16 L34,24" stroke="#c17b2a" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M34,24 L34,14 C34,8 38,6 42,8 C46,10 46,16 46,22 L46,32" stroke="#c17b2a" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M18,42 C18,46 22,48 28,48 C34,48 40,46 44,42 C46,40 46,36 46,32" stroke="#c17b2a" stroke-width="2" fill="rgba(193,123,42,0.1)" stroke-linecap="round"/><path d="M14,26 C10,22 10,14 14,12 C18,10 22,14 24,20" stroke="#c17b2a" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+    <span style="font-family:'DM Mono',monospace;font-size:1.2rem;letter-spacing:0.15em;color:rgba(193,123,42,0.7);text-transform:uppercase;display:block;margin-bottom:0.4rem">15</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:0.5rem;display:block">The Refusal</span>
+    <p style="font-size:0.95rem;color:#9a9488;line-height:1.65">They have said no to growth when growth would have required saying no to deserve.</p>
+  </div>
+  </div>
+</div>
+</div>
+
+<div style="padding:6rem 12vw;text-align:center;background:#040402;border-top:1px solid #1a1a18">
+  <svg viewBox="0 0 680 520" width="220" height="170" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto 2rem">
+  <g transform="translate(340,240)">
+    <path d="M0,-160 C60,-160 120,-120 120,-60 C120,30 60,120 0,170 C-60,120 -120,30 -120,-60 C-120,-120 -60,-160 0,-160Z" fill="rgba(0,0,0,0.7)" transform="translate(4,6)"/>
+    <path d="M0,-160 C60,-160 120,-120 120,-60 C120,30 60,120 0,170 C-60,120 -120,30 -120,-60 C-120,-120 -60,-160 0,-160Z" fill="#1a1814"/>
+    <path d="M0,-160 C60,-160 120,-120 120,-60 C120,30 60,120 0,170 C-60,120 -120,30 -120,-60 C-120,-120 -60,-160 0,-160Z" stroke="#b0b0bc" stroke-width="5" fill="none"/>
+    <path d="M0,-148 C54,-148 108,-112 108,-56 C108,28 54,110 0,158 C-54,110 -108,28 -108,-56 C-108,-112 -54,-148 0,-148Z" stroke="#888898" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <circle cx="0" cy="-152" r="5" fill="#1a1814" stroke="#b0b0bc" stroke-width="2"/>
+    <circle cx="110" cy="-58" r="5" fill="#1a1814" stroke="#b0b0bc" stroke-width="2"/>
+    <circle cx="-110" cy="-58" r="5" fill="#1a1814" stroke="#b0b0bc" stroke-width="2"/>
+    <circle cx="70" cy="110" r="5" fill="#1a1814" stroke="#b0b0bc" stroke-width="2"/>
+    <circle cx="-70" cy="110" r="5" fill="#1a1814" stroke="#b0b0bc" stroke-width="2"/>
+    <polygon points="0,-82 20,-20 82,0 20,20 0,82 -20,20 -82,0 -20,-20" fill="rgba(0,0,0,0.5)" transform="translate(2,4)"/>
+    <polygon points="0,-82 20,-20 82,0 20,20 0,82 -20,20 -82,0 -20,-20" fill="rgba(0,0,0,0.5)" transform="translate(2,4) rotate(22.5)"/>
+    <polygon points="0,-82 20,-20 82,0 20,20 0,82 -20,20 -82,0 -20,-20" fill="#2a2828" stroke="#c0c0cc" stroke-width="2.5"/>
+    <polygon points="0,-82 20,-20 82,0 20,20 0,82 -20,20 -82,0 -20,-20" fill="#2a2828" stroke="#c0c0cc" stroke-width="2.5" transform="rotate(22.5)"/>
+    <circle cx="0" cy="0" r="14" fill="#100e0c" stroke="#b0b0bc" stroke-width="2"/>
+    <circle cx="0" cy="0" r="9" fill="#1e1c1a" stroke="#888898" stroke-width="1" opacity="0.8"/>
+    <circle cx="-3" cy="-3" r="3.5" fill="rgba(200,200,220,0.35)"/>
+    <text x="0.5" y="125" font-family="Georgia,serif" font-size="28" font-weight="700" fill="rgba(0,0,0,0.7)" text-anchor="middle" letter-spacing="6">GB</text>
+    <text x="0" y="124" font-family="Georgia,serif" font-size="28" font-weight="700" fill="#c8c8d4" text-anchor="middle" letter-spacing="6">GB</text>
+  </g>
+  <line x1="160" y1="440" x2="520" y2="440" stroke="rgba(193,123,42,0.25)" stroke-width="1"/>
+  <text x="340" y="466" font-family="Georgia,serif" font-size="22" fill="#c17b2a" text-anchor="middle" letter-spacing="8">THE GUILD OF BETTER</text>
+</svg>
+  <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1.2rem;color:#9a9488;line-height:1.7;max-width:520px;margin:0 auto 2.5rem">Here are the organizations that live this argument. The proof that the belief compounds commercially.</p>
+  <a href="hall.html" class="page-link">Enter The Guild of Better →</a>
+</div>
+
+<div class="newsletter">
+  <span class="nl-kicker">Stay In It</span>
+  <div class="nl-title">Hardwired</div>
+  <p class="nl-body">A newsletter about the systems, standards, refusals, and rituals that keep companies from becoming average.</p>
+  <a href="https://ed542.substack.com/" target="_blank" class="nl-btn">Subscribe to Hardwired</a>
+</div>
+</body>
+</html>
