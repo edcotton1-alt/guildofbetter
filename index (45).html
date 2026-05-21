@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Don't Half-Arse It · The Case For Better</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:18px;scroll-behavior:smooth}
+body{background:#090907;color:#f0ebe2;font-family:'Crimson Pro',Georgia,serif;overflow-x:hidden}
+:root{--amber:#c17b2a;--red:#8b2020;--dim:#9a9a8a;--grey:#1a1a18;--white:#f0ebe2}
+.top-bar{background:#040402;border-bottom:1px solid #1a1a18;padding:0.5rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.top-bar a{font-family:'DM Mono',monospace;font-size:0.9rem;letter-spacing:0.1em;color:var(--amber);text-decoration:none;text-transform:uppercase}
+.top-bar span{font-family:'DM Mono',monospace;font-size:0.9rem;letter-spacing:0.1em;color:var(--dim);text-transform:uppercase}
+.page-link{display:inline-block;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;padding:1.2rem 3rem;background:var(--amber);color:#090907;text-decoration:none;transition:background 0.2s}
+.page-link:hover{background:#d4892e}
+.page-link.ghost{background:none;color:var(--amber);border:1px solid rgba(193,123,42,0.4)}
+.page-link.ghost:hover{background:rgba(193,123,42,0.08)}
+.section-label{font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.3em;color:rgba(193,123,42,0.4);text-transform:uppercase;display:block;margin-bottom:1rem}
+.section-intro{font-size:1.1rem;color:#9a9488;line-height:1.8;max-width:640px;margin-bottom:3rem}
+.newsletter{background:#0c0c0a;border-top:1px solid #1a1a18;padding:5rem 12vw;text-align:center}
+.nl-kicker{font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:0.3em;color:rgba(193,123,42,0.4);text-transform:uppercase;display:block;margin-bottom:1rem}
+.nl-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:0.04em;color:var(--white);line-height:1;margin-bottom:1rem}
+.nl-body{font-size:1rem;color:#9a9488;line-height:1.8;max-width:520px;margin:0 auto 2.5rem}
+.nl-body strong{color:#c8c4ba}
+.nl-btn{display:inline-block;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;padding:1rem 2.5rem;background:var(--amber);color:#090907;text-decoration:none}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:6rem 12vw;border-bottom:1px solid #1a1a18;position:relative;overflow:hidden}
+.hero::before{display:none}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%, transparent 40%, #090907 80%);pointer-events:none;z-index:0;}
+.hero-kicker{font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.15em;color:rgba(193,123,42,0.9);text-transform:uppercase;display:block;margin-bottom:2rem;position:relative;z-index:1}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,12vw,10rem);letter-spacing:0.02em;line-height:0.9;color:var(--white);margin-bottom:2.5rem;position:relative;z-index:1}
+.hero-title span{color:var(--amber)}
+.hero-intro{font-size:1.25rem;color:#9a9488;line-height:1.85;max-width:620px;position:relative;z-index:1}
+.hero-intro strong{color:var(--white)}
+.scroll-hint{font-family:'DM Mono',monospace;font-size:0.9rem;letter-spacing:0.15em;color:rgba(193,123,42,0.6);text-transform:uppercase;margin-top:4rem;display:block;position:relative;z-index:1}
+.etym{padding:4rem 12vw 6rem;border-bottom:1px solid #1a1a18}
+.etym-label{font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.15em;color:rgba(193,123,42,0.95);text-transform:uppercase;display:block;margin-bottom:1.5rem}
+.etym-text{font-size:1.2rem;color:#d8d4ca;line-height:1.9;max-width:680px}
+.etym-text em{color:var(--amber);font-style:normal}
+.etym-text p{margin-bottom:1.4rem}
+.etym-text p:last-child{margin-bottom:0}
+.q-item{padding:6rem 12vw;border-bottom:1px solid #1a1a18}
+.q-label{font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.15em;color:rgba(193,123,42,0.85);text-transform:uppercase;display:block;margin-bottom:1.5rem}
+.q-statement{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,8vw,7.5rem);letter-spacing:0.02em;line-height:0.95;margin-bottom:1.8rem}
+.q-statement.deserve{color:var(--amber)}
+.q-statement.accept{color:rgba(255,255,255,0.45)}
+.q-statement.getaway{color:#c94040}
+.q-body{font-size:1.2rem;color:#9a9488;line-height:1.8;max-width:560px}
+.q-body strong{color:#c8c4ba}
+.deserve-close{padding:6rem 12vw;border-bottom:1px solid #1a1a18;background:#0c0c0a}
+.hallmark-wrap{padding:6rem 12vw;background:#040402;border-bottom:1px solid #1a1a18;display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.2rem}
+.hm-label{font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.15em;color:rgba(193,123,42,0.9);text-transform:uppercase;display:block}
+</style>
+</head>
+<body>
+
+<div class="top-bar" style="justify-content:center">
+<a href="https://invernessconsult.com" target="_blank">Created by Ed Cotton · Inverness Consulting</a>
+</div>
+
+<div class="hero">
+<span class="hero-kicker">The Case For Better</span>
+<h1 class="hero-title">Don't<br>Half-<span>Arse</span><br>It.</h1>
+<p class="hero-intro">The corporate world divides into three kinds of organization. Those who deliver what is acceptable. Those who deliver what they can get away with. <strong>And those who deliver what their customers deserve.</strong></p>
+<span class="scroll-hint">↓ The argument</span>
+</div>
+
+<div class="etym">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(8rem,22vw,20rem);letter-spacing:0.04em;color:rgba(193,123,42,0.14);line-height:0.9;margin-bottom:0.5rem;user-select:none;pointer-events:none;text-shadow:0 0 80px rgba(193,123,42,0.08)">DESERVE</div>
+<span class="etym-label">The Root Of Everything</span>
+<div style="margin-bottom:3rem;padding:2.5rem;background:rgba(193,123,42,0.06);border-left:3px solid rgba(193,123,42,0.4)">
+<div style="font-family:'DM Mono',monospace;font-size:1.1rem;letter-spacing:0.2em;color:rgba(193,123,42,0.9);text-transform:uppercase;margin-bottom:1rem">de · serve</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.85rem;letter-spacing:0.12em;color:rgba(193,123,42,0.65);margin-bottom:1rem">from Latin <em style="color:var(--amber);font-style:normal;font-weight:500">deservire</em></div>
+<div style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1.8rem;color:#f0ebe2;margin-bottom:0.5rem;line-height:1.3">to serve zealously</div>
+<div style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1.8rem;color:#c8c4ba;margin-bottom:1.2rem;line-height:1.3">to devote oneself entirely to</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.12em;color:rgba(193,123,42,0.55);margin-top:0.5rem">root: <em style="color:rgba(193,123,42,0.8);font-style:normal">servire</em> · to serve · 12th century</div>
+</div>
+<div class="etym-text">
+<p>The root is service. Not entitlement. Not what the customer has earned. What you owe — to the work, and to the person who will receive it.</p>
+<p>It means the people you serve have a prior claim on your best effort. Not because they chose you. Not because they paid. Not because they have no alternative. Because they are human. And being human is sufficient grounds for receiving the best you are capable of making.</p>
+<p>The guilds understood this. They built deserve into commerce through codes, standards, inspections, marks, apprenticeships, and consequences. A hallmark was not a logo. It was a public promise that the maker could be held to.</p>
+</div>
+</div>
+
+<div style="padding:4rem 12vw;border-bottom:1px solid #1a1a18;background:#0c0c0a">
+<p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--white);line-height:1.5;max-width:700px;border-left:3px solid var(--amber);padding-left:2rem">Deserve is not earned by the customer.<br>It is owed by the maker.</p>
+</div>
+
+<div class="q-item">
+<span class="q-label">The First Question · The guild question</span>
+<div class="q-statement deserve">What Do People<br>Deserve?</div>
+<p class="q-body">The standard that exists independently of what the economics allow. The work done properly whether or not it is rewarded. The back of the choir stall finished to the same standard as the front. <strong>Deserve is not earned by the customer. It is owed by the maker.</strong></p>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#1a1a18;border-top:1px solid #1a1a18;border-bottom:1px solid #1a1a18">
+<div class="q-item" style="border-bottom:none;border-right:none">
+<span class="q-label">The Second Question · The drifter's question</span>
+<div class="q-statement accept">What Will People<br>Accept?</div>
+<p class="q-body">The threshold below which the complaint arrives. Most organizations live here. It is not dishonest. It drifts — because acceptable today is always slightly less than acceptable yesterday and nobody announces the change. <strong>The drift is always invisible until it isn't.</strong></p>
+</div>
+<div class="q-item" style="border-bottom:none;background:#0a0806">
+<span class="q-label">The Third Question · The enshittificator's question</span>
+<div class="q-statement getaway">What Can We<br>Get Away With?</div>
+<p class="q-body">This question can only be asked when you hold power over the person on the other side. The locked ecosystem. The proprietary cable. The switching cost too high to justify. Without the power asymmetry it is just a bad strategy. With it it becomes a business model. <strong>That is not commerce. That is abuse.</strong></p>
+</div>
+</div>
+
+<div style="padding:6rem 12vw;border-bottom:1px solid #1a1a18;background:#0a0a08">
+<span style="font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.15em;color:rgba(193,123,42,0.85);text-transform:uppercase;display:block;margin-bottom:2rem">Why This Matters Now</span>
+<div style="max-width:680px">
+<p style="font-size:1.1rem;color:#9a9488;line-height:1.9;margin-bottom:1.4rem">For most of the last century, half-arsing had limits. Bad service was visible. Poor quality had friction. Customers could feel the difference between care and extraction.</p>
+<p style="font-size:1.1rem;color:#9a9488;line-height:1.9;margin-bottom:1.4rem">Now the economics have changed. Optimization systems can remove cost, smooth over complaints, enable manipulation, bury friction, and make decline look like progress.</p>
+<p style="font-size:1.1rem;color:#9a9488;line-height:1.9;margin-bottom:1.4rem">AI will not automatically make companies better. It will make them more like themselves. The generous will become more generous. The extractive will become more efficient at extraction. The unclear will become more average.</p>
+<p style="font-size:1.1rem;color:#c8c4ba;line-height:1.9;margin-bottom:1.4rem">The machine does not know what people deserve. It knows what has been specified, measured, optimized, rewarded, and repeated. If an organization has never defined its standard, the machine will inherit its shortcuts.</p>
+<p style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,3vw,2.5rem);letter-spacing:0.03em;color:var(--amber);line-height:1.1;margin-top:2rem">Which is why every organization now needs to answer one question before the machine answers it for them.</p>
+</div>
+</div>
+
+<div class="deserve-close">
+<p style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:0.03em;color:var(--amber);line-height:1.05;max-width:800px">Deserve is the only question worth asking.</p>
+</div>
+
+<div style="padding:6rem 12vw;background:#040402;border-bottom:1px solid #1a1a18">
+<div style="max-width:680px;margin:0 auto;text-align:center">
+<span style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.18em;color:rgba(193,123,42,0.8);text-transform:uppercase;display:block;margin-bottom:2rem">The Hallmark</span>
+<p style="font-size:1.2rem;color:#c8c4ba;line-height:1.9;margin-bottom:1.4rem">In 12th century London, goldsmiths were required by law to bring their work to Goldsmith's Hall before it could be sold. Assay masters — independent inspectors with no financial interest in the outcome — tested the metal against the standard. If it passed, they struck a mark into the surface. The hallmark.</p>
+<p style="font-size:1.2rem;color:#c8c4ba;line-height:1.9;margin-bottom:1.4rem">The mark was not applied by the maker. It was applied by people whose only job was to refuse it if it wasn't right.</p>
+<p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1.3rem;color:var(--white);line-height:1.6;margin-bottom:0">A hallmark was not a logo. It was a public promise that the maker could be held to.</p>
+</div>
+</div>
+
+<div class="hallmark-wrap">
+<svg viewBox="0 0 160 200" width="120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialGradient id="mg" cx="40%" cy="35%" r="60%">
+<stop offset="0%" stop-color="#d0d0d8" stop-opacity="0.22"/>
+<stop offset="100%" stop-color="#8a5510" stop-opacity="0.05"/>
+</radialGradient>
+<radialGradient id="eg" cx="35%" cy="30%" r="65%">
+<stop offset="0%" stop-color="#d0d0d8" stop-opacity="0.35"/>
+<stop offset="100%" stop-color="#6a4010" stop-opacity="0.08"/>
+</radialGradient>
+</defs>
+<g transform="translate(80,96)">
+<path d="M0,-80 C28,-80 58,-57 58,-29 C58,16 28,60 0,80 C-28,60 -58,16 -58,-29 C-58,-57 -28,-80 0,-80Z" fill="rgba(0,0,0,0.5)" transform="translate(2,3)"/>
+<path d="M0,-80 C28,-80 58,-57 58,-29 C58,16 28,60 0,80 C-28,60 -58,16 -58,-29 C-58,-57 -28,-80 0,-80Z" fill="url(#mg)"/>
+<path d="M0,-80 C28,-80 58,-57 58,-29 C58,16 28,60 0,80 C-28,60 -58,16 -58,-29 C-58,-57 -28,-80 0,-80Z" stroke="#c8c8d0" stroke-width="3" fill="none" opacity="0.7"/>
+<path d="M0,-80 C28,-80 58,-57 58,-29 C58,16 28,60 0,80 C-28,60 -58,16 -58,-29 C-58,-57 -28,-80 0,-80Z" stroke="#6a4010" stroke-width="3" fill="none" opacity="0.35" transform="translate(1,1)"/>
+<path d="M0,-70 C24,-70 50,-50 50,-25 C50,14 24,52 0,70 C-24,52 -50,14 -50,-25 C-50,-50 -24,-70 0,-70Z" stroke="#c8c8d0" stroke-width="1" fill="none" opacity="0.2"/>
+<polygon points="0,-40 10,-10 40,0 10,10 0,40 -10,10 -40,0 -10,-10" fill="rgba(0,0,0,0.35)" transform="translate(1.5,2.5)"/>
+<polygon points="0,-40 10,-10 40,0 10,10 0,40 -10,10 -40,0 -10,-10" fill="url(#eg)" stroke="#c8c8d0" stroke-width="2" opacity="1"/>
+<polygon points="0,-40 10,-10 40,0 10,10 0,40 -10,10 -40,0 -10,-10" fill="url(#eg)" stroke="#c8c8d0" stroke-width="2" opacity="1" transform="rotate(22.5)"/>
+<circle cx="0" cy="0" r="7" fill="#1a0e04" stroke="#c8c8d0" stroke-width="1.2"/>
+<circle cx="0" cy="0" r="4" fill="url(#eg)" stroke="rgba(200,200,210,0.4)" stroke-width="0.6"/>
+<circle cx="-1.5" cy="-1.5" r="1.5" fill="rgba(220,220,230,0.5)"/>
+<text x="0.8" y="64" font-family="Georgia,serif" font-size="18" font-weight="700" fill="rgba(0,0,0,0.9)" text-anchor="middle" letter-spacing="5">GB</text>
+<text x="0" y="63" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#c8c8d0" text-anchor="middle" letter-spacing="5" opacity="0.95">GB</text>
+<circle cx="0" cy="-76" r="2" fill="#1a0e04" stroke="#c8c8d0" stroke-width="0.8" opacity="0.5"/>
+<circle cx="0" cy="76" r="2" fill="#1a0e04" stroke="#c8c8d0" stroke-width="0.8" opacity="0.5"/>
+<circle cx="-54" cy="-26" r="2" fill="#1a0e04" stroke="#c8c8d0" stroke-width="0.8" opacity="0.5"/>
+<circle cx="54" cy="-26" r="2" fill="#1a0e04" stroke="#c8c8d0" stroke-width="0.8" opacity="0.5"/>
+</g>
+</svg>
+<span class="hm-label">The Guild of Better</span>
+</div>
+
+<!-- NEW SECTION: A Guild -->
+<div style="padding:6rem 12vw;border-bottom:1px solid #1a1a18;background:#0a0a08">
+<span style="font-family:'DM Mono',monospace;font-size:1rem;letter-spacing:0.15em;color:rgba(193,123,42,0.85);text-transform:uppercase;display:block;margin-bottom:2rem">A Guild</span>
+<div style="max-width:680px">
+<p style="font-size:1.2rem;color:#c8c4ba;line-height:1.9;margin-bottom:1.4rem">A guild is not a directory. It is not a list of companies that said the right things. It is not a badge. It is not a ranking.</p>
+<p style="font-size:1.2rem;color:#c8c4ba;line-height:1.9;margin-bottom:1.4rem">A guild is a collective commitment to a standard that no single member could hold alone.</p>
+<p style="font-size:1.1rem;color:#9a9488;line-height:1.9;margin-bottom:1.4rem">The original guilds were born between the eleventh and sixteenth centuries. Not in stability but in the most unstable period of European history. Plague. War. Famine. Political collapse. The complete absence of the state in large parts of daily life.</p>
+<p style="font-size:1.1rem;color:#9a9488;line-height:1.9;margin-bottom:1.4rem">In those conditions the guild became something more than a quality standard. It became infrastructure for survival. When the Black Death tore through Europe, guilds became extended families for those who remained. They covered the costs of burying the dead. They supported the families left behind. They kept the craft alive when half the craftsmen were gone.</p>
+<p style="font-size:1.1rem;color:#9a9488;line-height:1.9;margin-bottom:1.4rem">They also did something more lasting. By holding standards collectively. By refusing to let the crisis become an excuse for the drift. They slowly shifted the structure of power. The craftspeople and merchants who held their standard through the worst times became the foundation of a new economic order. The guilds didn't just survive the medieval polycrisis. They helped build what came after it.</p>
+<p style="font-size:1.1rem;color:#9a9488;line-height:1.9;margin-bottom:2rem">We are in an analogous moment. Climate. AI. Geopolitical fracture. The unravelling of the carbon economy. No single disruption. All of them at once. The pressure on every organisation to cut corners, to substitute, to fake it, to let the drift become invisible is real and will intensify.</p>
+<p style="font-size:1.2rem;color:#c8c4ba;line-height:1.9;margin-bottom:1.4rem">The Guild of Better exists as an idea for the practitioners who believe in holding themselves to the standard that their customers deserve better.</p>
+<p style="font-size:1.2rem;color:#c8c4ba;line-height:1.9;margin-bottom:2.5rem">They are the ones this transition will test hardest. And if the original guilds are any guide, they are the ones who will not just survive it.</p>
+<p style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,3vw,2.5rem);letter-spacing:0.03em;color:var(--amber);line-height:1.1">They will have a hand in building what comes next.</p>
+</div>
+</div>
+
+<div style="padding:6rem 12vw;text-align:center;background:#040402;border-top:1px solid #1a1a18">
+<svg viewBox="0 0 700 600" width="255" height="306" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto 2rem">
+<path d="M350,30 C440,30 520,80 520,160 C520,280 440,380 350,440 C260,380 180,280 180,160 C180,80 260,30 350,30Z" fill="rgba(0,0,0,0.8)" transform="translate(5,8)"/>
+<path d="M350,30 C440,30 520,80 520,160 C520,280 440,380 350,440 C260,380 180,280 180,160 C180,80 260,30 350,30Z" fill="#141210"/>
+<path d="M350,30 C440,30 520,80 520,160 C520,280 440,380 350,440 C260,380 180,280 180,160 C180,80 260,30 350,30Z" stroke="#a8a8b8" stroke-width="8" fill="none"/>
+<path d="M350,48 C432,48 502,94 502,165 C502,276 432,370 350,425 C268,370 198,276 198,165 C198,94 268,48 350,48Z" stroke="#787888" stroke-width="2" fill="none" opacity="0.6"/>
+<circle cx="350" cy="34" r="7" fill="#141210" stroke="#a8a8b8" stroke-width="2.5"/>
+<circle cx="512" cy="155" r="7" fill="#141210" stroke="#a8a8b8" stroke-width="2.5"/>
+<circle cx="188" cy="155" r="7" fill="#141210" stroke="#a8a8b8" stroke-width="2.5"/>
+<circle cx="456" cy="362" r="7" fill="#141210" stroke="#a8a8b8" stroke-width="2.5"/>
+<circle cx="244" cy="362" r="7" fill="#141210" stroke="#a8a8b8" stroke-width="2.5"/>
+<g transform="translate(350,210)">
+<polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="rgba(0,0,0,0.6)" transform="translate(3,5)"/>
+<polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="rgba(0,0,0,0.6)" transform="translate(3,5) rotate(22.5)"/>
+<polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3"/>
+<polygon points="0,-110 26,-26 110,0 26,26 0,110 -26,26 -110,0 -26,-26" fill="#1e1c1a" stroke="#b8b8c8" stroke-width="3" transform="rotate(22.5)"/>
+<circle cx="0" cy="0" r="18" fill="#0e0c0a" stroke="#a8a8b8" stroke-width="3"/>
+<circle cx="0" cy="0" r="11" fill="#1a1816" stroke="#686878" stroke-width="1.5" opacity="0.8"/>
+<circle cx="-4" cy="-4" r="5" fill="rgba(200,200,225,0.3)"/>
+<circle cx="-4" cy="-4" r="2" fill="rgba(220,220,240,0.5)"/>
+</g>
+<text x="350" y="353" font-family="Georgia,'Times New Roman',serif" font-size="42" font-weight="400" fill="#c8c8d8" text-anchor="middle" letter-spacing="10">GB</text>
+<line x1="50" y1="466" x2="650" y2="466" stroke="rgba(193,123,42,0.3)" stroke-width="1"/>
+<text x="350" y="520" font-family="Georgia,'Times New Roman',serif" font-size="30" font-weight="400" fill="#c17b2a" text-anchor="middle" letter-spacing="16">THE GUILD OF BETTER</text>
+</svg>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:0.03em;color:#f0ebe2;line-height:1;margin-bottom:1.2rem">The Fifteen Signals</div>
+<p style="font-family:'Crimson Pro',serif;font-size:1.2rem;color:#9a9488;line-height:1.8;max-width:520px;margin:0 auto 3rem">Signals that indicate a company believes their customers deserve better than they are getting elsewhere.</p>
+<a href="signals.html" style="display:inline-block;font-family:'DM Mono',monospace;font-size:0.9rem;letter-spacing:0.15em;text-transform:uppercase;padding:1.2rem 3rem;background:#c17b2a;color:#090907;text-decoration:none">See The Signals →</a>
+</div>
+
+</body>
+</html>
